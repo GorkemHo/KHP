@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KHP.Dal.IRepo
 {
-    internal interface IYemekRepo
+    internal interface IGidaRepo
     {
     }
 }

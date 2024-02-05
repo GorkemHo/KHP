@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KHP.Dal.Repo
 {
-    internal class YemekRepo
+    internal class GidaRepo
     {
     }
 }
