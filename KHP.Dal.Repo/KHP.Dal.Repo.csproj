@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\KHP.Dal.IRepo\KHP.Dal.IRepo.csproj" />
+    <ProjectReference Include="..\KHP.Dal\KHP.Dal.csproj" />
+  </ItemGroup>
+
 </Project>

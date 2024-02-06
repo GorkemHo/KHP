@@ -1,4 +1,5 @@
-﻿using KHP.Entities.Enums;
+﻿using KHP.Core;
+using KHP.Entities.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace KHP.Entities
 {
-    public class Gida
+    public class Gida : BaseEntity
     {
         public string Ad { get; set; }
         public decimal Kalori { get; set; }

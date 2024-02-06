@@ -1,4 +1,9 @@
-﻿using System;
+﻿using KHP.Core;
+using KHP.Dal.Context;
+using KHP.Dal.IRepo;
+using KHP.Entities;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +11,10 @@ using System.Threading.Tasks;
 
 namespace KHP.Dal.Repo
 {
-    internal class KullaniciRepo
+    public class KullaniciRepo : BaseRepository<Kullanici>, IKullaniciRepo
     {
+        public KullaniciRepo(DbContext context = null) : base(context ?? new KHPDbContext())
+        {
+        }
     }
 }

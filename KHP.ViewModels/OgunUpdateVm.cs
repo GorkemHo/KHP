@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace KHP.ViewModels
 {
-    internal class OgunUpdateVm
+    public class OgunUpdateVm
     {
+        public string Ad { get; set; }
+        public DateTime OlusturulmaTarihi { get; set; }
+        public int KullaniciID { get; set; }
     }
 }

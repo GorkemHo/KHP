@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KHP.Bll.IServices
 {
-    internal interface IOgunService
+    public interface IOgunService
     {
     }
 }

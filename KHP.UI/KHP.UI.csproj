@@ -8,4 +8,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\KHP.Bll.Services\KHP.Bll.Services.csproj" />
+  </ItemGroup>
+
 </Project>

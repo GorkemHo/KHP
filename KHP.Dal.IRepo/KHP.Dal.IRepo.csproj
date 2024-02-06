@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\KHP.Core\KHP.Core.csproj" />
+    <ProjectReference Include="..\KHP.Entities\KHP.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
