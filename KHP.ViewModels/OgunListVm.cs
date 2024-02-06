@@ -13,5 +13,6 @@ namespace KHP.ViewModels
         public DateTime OlusturulmaTarihi { get; set; }
         public int KullaniciID { get; set; }
         public virtual Kullanici Kullanici { get; set; }
+        
     }
 }
