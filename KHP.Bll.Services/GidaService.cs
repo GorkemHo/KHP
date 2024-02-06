@@ -29,6 +29,7 @@ namespace KHP.Bll.Services
                 Id = g.ID,
                 Ad = g.Ad,
                 Kalori= g.Kalori,
+                Porsiyon = g.Porsiyon,
                 GidaTuru = g.GidaTuru,
                 OgunID = g.OgunID
             }).ToList();
@@ -41,6 +42,7 @@ namespace KHP.Bll.Services
             {
                 Ad = gida.Ad,
                 Kalori = gida.Kalori,
+                Porsiyon = gida.Porsiyon,
                 GidaTuru= gida.GidaTuru,
                 OlusturulmaTarihi = gida.Ogun.OlusturulmaTarihi
             }).ToList();

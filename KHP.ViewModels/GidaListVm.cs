@@ -12,6 +12,7 @@ namespace KHP.ViewModels
         public int Id { get; set; }
         public string Ad { get; set; }
         public decimal Kalori { get; set; }
+        public decimal Porsiyon { get; set; }
         public GidaTurleri GidaTuru { get; set; }
         public int? OgunID { get; set; }
         public DateTime OlusturulmaTarihi { get; set; }

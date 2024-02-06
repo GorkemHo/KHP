@@ -12,6 +12,7 @@ namespace KHP.Entities
     {
         public string Ad { get; set; }
         public decimal Kalori { get; set; }
+        public decimal Porsiyon { get; set; }
         public GidaTurleri GidaTuru { get; set; }
 
         //FR

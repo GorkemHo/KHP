@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KHP.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,6 @@ namespace KHP.ViewModels
         public string Ad { get; set; }
         public DateTime OlusturulmaTarihi { get; set; }
         public int KullaniciID { get; set; }
+        public virtual ICollection<Gida> Yemekler { get; set; }
     }
 }
