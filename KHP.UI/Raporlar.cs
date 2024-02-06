@@ -12,7 +12,7 @@ namespace KHP.UI
 {
     public partial class Raporlar : Form
     {
-        public Raporlar()
+        public Raporlar(int kullaniciId)
         {
             InitializeComponent();
         }

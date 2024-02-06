@@ -28,131 +28,132 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            comboBox1 = new ComboBox();
-            dateTimePicker1 = new DateTimePicker();
-            listView1 = new ListView();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            label1 = new Label();
-            button1 = new Button();
-            listView2 = new ListView();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
+            txtAramaMetni = new TextBox();
+            cmbOgunSecme = new ComboBox();
+            dtpOgunTarihi = new DateTimePicker();
+            txtSecilenUrunAdi = new TextBox();
+            txtSecilenUrunPorsiyon = new TextBox();
+            lblSecilenKalorisi = new Label();
+            btnSec = new Button();
+            lstSecilenler = new ListView();
+            btnTemizle = new Button();
+            btnSecilenleriKaydet = new Button();
+            btnRaporlarSayfasi = new Button();
             label2 = new Label();
             groupBox1 = new GroupBox();
-            dateTimePicker2 = new DateTimePicker();
-            listView3 = new ListView();
-            button5 = new Button();
-            button6 = new Button();
-            button7 = new Button();
-            button8 = new Button();
+            dgwDetaylar = new DataGridView();
+            label9 = new Label();
             label3 = new Label();
+            btnGuncelle = new Button();
+            btnSil = new Button();
+            btnListele = new Button();
+            btnEkle = new Button();
+            dtpDetayTarih = new DateTimePicker();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
-            label9 = new Label();
+            dgwGidalar = new DataGridView();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgwDetaylar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgwGidalar).BeginInit();
             SuspendLayout();
             // 
-            // textBox1
+            // txtAramaMetni
             // 
-            textBox1.Location = new Point(61, 86);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 0;
+            txtAramaMetni.Location = new Point(61, 86);
+            txtAramaMetni.Name = "txtAramaMetni";
+            txtAramaMetni.Size = new Size(100, 23);
+            txtAramaMetni.TabIndex = 0;
+            txtAramaMetni.TextChanged += txtAramaMetni_TextChanged;
             // 
-            // comboBox1
+            // cmbOgunSecme
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(61, 141);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 1;
+            cmbOgunSecme.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbOgunSecme.FormattingEnabled = true;
+            cmbOgunSecme.Items.AddRange(new object[] { "Kahvalti", "OglenYemegi", "AksamYemegi", "AraOgun" });
+            cmbOgunSecme.Location = new Point(61, 141);
+            cmbOgunSecme.Name = "cmbOgunSecme";
+            cmbOgunSecme.Size = new Size(121, 23);
+            cmbOgunSecme.TabIndex = 1;
             // 
-            // dateTimePicker1
+            // dtpOgunTarihi
             // 
-            dateTimePicker1.Location = new Point(237, 140);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(128, 23);
-            dateTimePicker1.TabIndex = 2;
+            dtpOgunTarihi.Location = new Point(237, 140);
+            dtpOgunTarihi.Name = "dtpOgunTarihi";
+            dtpOgunTarihi.Size = new Size(128, 23);
+            dtpOgunTarihi.TabIndex = 2;
             // 
-            // listView1
+            // txtSecilenUrunAdi
             // 
-            listView1.Location = new Point(62, 169);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(305, 160);
-            listView1.TabIndex = 3;
-            listView1.UseCompatibleStateImageBehavior = false;
+            txtSecilenUrunAdi.Location = new Point(61, 351);
+            txtSecilenUrunAdi.Name = "txtSecilenUrunAdi";
+            txtSecilenUrunAdi.Size = new Size(100, 23);
+            txtSecilenUrunAdi.TabIndex = 4;
             // 
-            // textBox2
+            // txtSecilenUrunPorsiyon
             // 
-            textBox2.Location = new Point(61, 351);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 4;
+            txtSecilenUrunPorsiyon.Location = new Point(190, 351);
+            txtSecilenUrunPorsiyon.Name = "txtSecilenUrunPorsiyon";
+            txtSecilenUrunPorsiyon.Size = new Size(100, 23);
+            txtSecilenUrunPorsiyon.TabIndex = 4;
+            txtSecilenUrunPorsiyon.TextChanged += txtSecilenUrunPorsiyon_TextChanged;
             // 
-            // textBox3
+            // lblSecilenKalorisi
             // 
-            textBox3.Location = new Point(190, 351);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 4;
+            lblSecilenKalorisi.Location = new Point(296, 330);
+            lblSecilenKalorisi.Name = "lblSecilenKalorisi";
+            lblSecilenKalorisi.Size = new Size(123, 47);
+            lblSecilenKalorisi.TabIndex = 5;
             // 
-            // label1
+            // btnSec
             // 
-            label1.Location = new Point(296, 330);
-            label1.Name = "label1";
-            label1.Size = new Size(123, 47);
-            label1.TabIndex = 5;
-            label1.Text = "Secilen urun ve porsiyona gore kalori bilgisi";
+            btnSec.Location = new Point(61, 380);
+            btnSec.Name = "btnSec";
+            btnSec.Size = new Size(304, 34);
+            btnSec.TabIndex = 6;
+            btnSec.Text = "SEC";
+            btnSec.UseVisualStyleBackColor = true;
+            btnSec.Click += btnSec_Click;
             // 
-            // button1
+            // lstSecilenler
             // 
-            button1.Location = new Point(61, 380);
-            button1.Name = "button1";
-            button1.Size = new Size(304, 34);
-            button1.TabIndex = 6;
-            button1.Text = "SEC";
-            button1.UseVisualStyleBackColor = true;
+            lstSecilenler.Location = new Point(62, 431);
+            lstSecilenler.Name = "lstSecilenler";
+            lstSecilenler.Size = new Size(305, 110);
+            lstSecilenler.TabIndex = 3;
+            lstSecilenler.UseCompatibleStateImageBehavior = false;
             // 
-            // listView2
+            // btnTemizle
             // 
-            listView2.Location = new Point(62, 431);
-            listView2.Name = "listView2";
-            listView2.Size = new Size(305, 110);
-            listView2.TabIndex = 3;
-            listView2.UseCompatibleStateImageBehavior = false;
+            btnTemizle.Location = new Point(62, 573);
+            btnTemizle.Name = "btnTemizle";
+            btnTemizle.Size = new Size(118, 40);
+            btnTemizle.TabIndex = 7;
+            btnTemizle.Text = "TEMIZLE";
+            btnTemizle.UseVisualStyleBackColor = true;
+            btnTemizle.Click += btnTemizle_Click_1;
             // 
-            // button2
+            // btnSecilenleriKaydet
             // 
-            button2.Location = new Point(62, 573);
-            button2.Name = "button2";
-            button2.Size = new Size(118, 40);
-            button2.TabIndex = 7;
-            button2.Text = "TEMIZLE";
-            button2.UseVisualStyleBackColor = true;
+            btnSecilenleriKaydet.Location = new Point(237, 573);
+            btnSecilenleriKaydet.Name = "btnSecilenleriKaydet";
+            btnSecilenleriKaydet.Size = new Size(130, 40);
+            btnSecilenleriKaydet.TabIndex = 8;
+            btnSecilenleriKaydet.Text = "SECILENLERI KAYDET";
+            btnSecilenleriKaydet.UseVisualStyleBackColor = true;
+            btnSecilenleriKaydet.Click += btnSecilenleriKaydet_Click;
             // 
-            // button3
+            // btnRaporlarSayfasi
             // 
-            button3.Location = new Point(237, 573);
-            button3.Name = "button3";
-            button3.Size = new Size(130, 40);
-            button3.TabIndex = 8;
-            button3.Text = "SECILENLERI KAYDET";
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            button4.Location = new Point(155, 631);
-            button4.Name = "button4";
-            button4.Size = new Size(106, 44);
-            button4.TabIndex = 9;
-            button4.Text = "RAPORLAR SAYFASI";
-            button4.UseVisualStyleBackColor = true;
+            btnRaporlarSayfasi.Location = new Point(155, 631);
+            btnRaporlarSayfasi.Name = "btnRaporlarSayfasi";
+            btnRaporlarSayfasi.Size = new Size(106, 44);
+            btnRaporlarSayfasi.TabIndex = 9;
+            btnRaporlarSayfasi.Text = "RAPORLAR SAYFASI";
+            btnRaporlarSayfasi.UseVisualStyleBackColor = true;
+            btnRaporlarSayfasi.Click += btnRaporlarSayfasi_Click_1;
             // 
             // label2
             // 
@@ -165,14 +166,14 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(dgwDetaylar);
             groupBox1.Controls.Add(label9);
             groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(button8);
-            groupBox1.Controls.Add(button7);
-            groupBox1.Controls.Add(button6);
-            groupBox1.Controls.Add(button5);
-            groupBox1.Controls.Add(listView3);
-            groupBox1.Controls.Add(dateTimePicker2);
+            groupBox1.Controls.Add(btnGuncelle);
+            groupBox1.Controls.Add(btnSil);
+            groupBox1.Controls.Add(btnListele);
+            groupBox1.Controls.Add(btnEkle);
+            groupBox1.Controls.Add(dtpDetayTarih);
             groupBox1.Location = new Point(721, 90);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(482, 502);
@@ -180,56 +181,24 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
             // 
-            // dateTimePicker2
+            // dgwDetaylar
             // 
-            dateTimePicker2.Location = new Point(38, 65);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(200, 23);
-            dateTimePicker2.TabIndex = 0;
+            dgwDetaylar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgwDetaylar.Location = new Point(6, 109);
+            dgwDetaylar.Name = "dgwDetaylar";
+            dgwDetaylar.RowTemplate.Height = 25;
+            dgwDetaylar.Size = new Size(315, 156);
+            dgwDetaylar.TabIndex = 18;
+            dgwDetaylar.CellClick += dgwDetaylar_CellClick;
             // 
-            // listView3
+            // label9
             // 
-            listView3.Location = new Point(38, 109);
-            listView3.Name = "listView3";
-            listView3.Size = new Size(230, 154);
-            listView3.TabIndex = 1;
-            listView3.UseCompatibleStateImageBehavior = false;
-            // 
-            // button5
-            // 
-            button5.Location = new Point(324, 109);
-            button5.Name = "button5";
-            button5.Size = new Size(105, 39);
-            button5.TabIndex = 2;
-            button5.Text = "EKLE";
-            button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            button6.Location = new Point(324, 154);
-            button6.Name = "button6";
-            button6.Size = new Size(105, 39);
-            button6.TabIndex = 3;
-            button6.Text = "LISTELE";
-            button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            button7.Location = new Point(324, 199);
-            button7.Name = "button7";
-            button7.Size = new Size(105, 39);
-            button7.TabIndex = 4;
-            button7.Text = "SIL";
-            button7.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            button8.Location = new Point(324, 244);
-            button8.Name = "button8";
-            button8.Size = new Size(105, 39);
-            button8.TabIndex = 5;
-            button8.Text = "GUNCELLE";
-            button8.UseVisualStyleBackColor = true;
+            label9.AutoSize = true;
+            label9.Location = new Point(37, 47);
+            label9.Name = "label9";
+            label9.Size = new Size(231, 15);
+            label9.TabIndex = 7;
+            label9.Text = "Detaylarini gormek istediginiz tarihi seciniz";
             // 
             // label3
             // 
@@ -239,6 +208,49 @@
             label3.Size = new Size(150, 15);
             label3.TabIndex = 6;
             label3.Text = "Gunun toplam kalori bilgisi";
+            // 
+            // btnGuncelle
+            // 
+            btnGuncelle.Location = new Point(324, 244);
+            btnGuncelle.Name = "btnGuncelle";
+            btnGuncelle.Size = new Size(105, 39);
+            btnGuncelle.TabIndex = 5;
+            btnGuncelle.Text = "GUNCELLE";
+            btnGuncelle.UseVisualStyleBackColor = true;
+            // 
+            // btnSil
+            // 
+            btnSil.Location = new Point(324, 199);
+            btnSil.Name = "btnSil";
+            btnSil.Size = new Size(105, 39);
+            btnSil.TabIndex = 4;
+            btnSil.Text = "SIL";
+            btnSil.UseVisualStyleBackColor = true;
+            // 
+            // btnListele
+            // 
+            btnListele.Location = new Point(324, 154);
+            btnListele.Name = "btnListele";
+            btnListele.Size = new Size(105, 39);
+            btnListele.TabIndex = 3;
+            btnListele.Text = "LISTELE";
+            btnListele.UseVisualStyleBackColor = true;
+            // 
+            // btnEkle
+            // 
+            btnEkle.Location = new Point(324, 109);
+            btnEkle.Name = "btnEkle";
+            btnEkle.Size = new Size(105, 39);
+            btnEkle.TabIndex = 2;
+            btnEkle.Text = "EKLE";
+            btnEkle.UseVisualStyleBackColor = true;
+            // 
+            // dtpDetayTarih
+            // 
+            dtpDetayTarih.Location = new Point(38, 65);
+            dtpDetayTarih.Name = "dtpDetayTarih";
+            dtpDetayTarih.Size = new Size(200, 23);
+            dtpDetayTarih.TabIndex = 0;
             // 
             // label4
             // 
@@ -285,20 +297,22 @@
             label8.TabIndex = 16;
             label8.Text = "Secilen Urun";
             // 
-            // label9
+            // dgwGidalar
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(37, 47);
-            label9.Name = "label9";
-            label9.Size = new Size(231, 15);
-            label9.TabIndex = 7;
-            label9.Text = "Detaylarini gormek istediginiz tarihi seciniz";
+            dgwGidalar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgwGidalar.Location = new Point(61, 169);
+            dgwGidalar.Name = "dgwGidalar";
+            dgwGidalar.RowTemplate.Height = 25;
+            dgwGidalar.Size = new Size(306, 150);
+            dgwGidalar.TabIndex = 17;
+            dgwGidalar.CellClick += dgwGidalar_CellClick;
             // 
             // AnaMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1230, 725);
+            Controls.Add(dgwGidalar);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -306,54 +320,56 @@
             Controls.Add(label4);
             Controls.Add(groupBox1);
             Controls.Add(label2);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(label1);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(listView2);
-            Controls.Add(listView1);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(comboBox1);
-            Controls.Add(textBox1);
+            Controls.Add(btnRaporlarSayfasi);
+            Controls.Add(btnSecilenleriKaydet);
+            Controls.Add(btnTemizle);
+            Controls.Add(btnSec);
+            Controls.Add(lblSecilenKalorisi);
+            Controls.Add(txtSecilenUrunPorsiyon);
+            Controls.Add(txtSecilenUrunAdi);
+            Controls.Add(lstSecilenler);
+            Controls.Add(dtpOgunTarihi);
+            Controls.Add(cmbOgunSecme);
+            Controls.Add(txtAramaMetni);
             Name = "AnaMenu";
             Text = "AnaMenu";
+            Load += AnaMenu_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgwDetaylar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgwGidalar).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private TextBox textBox1;
-        private ComboBox comboBox1;
-        private DateTimePicker dateTimePicker1;
-        private ListView listView1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private Label label1;
-        private Button button1;
-        private ListView listView2;
-        private Button button2;
-        private Button button3;
-        private Button button4;
+        private TextBox txtAramaMetni;
+        private ComboBox cmbOgunSecme;
+        private DateTimePicker dtpOgunTarihi;
+        private TextBox txtSecilenUrunAdi;
+        private TextBox txtSecilenUrunPorsiyon;
+        private Label lblSecilenKalorisi;
+        private Button btnSec;
+        private ListView lstSecilenler;
+        private Button btnTemizle;
+        private Button btnSecilenleriKaydet;
+        private Button btnRaporlarSayfasi;
         private Label label2;
         private GroupBox groupBox1;
         private Label label3;
-        private Button button8;
-        private Button button7;
-        private Button button6;
-        private Button button5;
-        private ListView listView3;
-        private DateTimePicker dateTimePicker2;
+        private Button btnGuncelle;
+        private Button btnSil;
+        private Button btnListele;
+        private Button btnEkle;
+        private DateTimePicker dtpDetayTarih;
         private Label label9;
         private Label label4;
         private Label label5;
         private Label label6;
         private Label label7;
         private Label label8;
+        private DataGridView dgwGidalar;
+        private DataGridView dgwDetaylar;
     }
 }
