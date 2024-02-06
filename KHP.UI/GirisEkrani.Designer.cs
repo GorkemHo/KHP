@@ -77,6 +77,7 @@
             lblKayıtOl.TabIndex = 4;
             lblKayıtOl.TabStop = true;
             lblKayıtOl.Text = "KAYIT OL";
+            lblKayıtOl.LinkClicked += lblKayıtOl_LinkClicked;
             // 
             // btnGirisYap
             // 
@@ -86,6 +87,7 @@
             btnGirisYap.TabIndex = 5;
             btnGirisYap.Text = "Giris Yap";
             btnGirisYap.UseVisualStyleBackColor = true;
+            btnGirisYap.Click += btnGirisYap_Click;
             // 
             // GirisEkrani
             // 

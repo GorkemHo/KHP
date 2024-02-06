@@ -12,7 +12,7 @@ namespace KHP.UI
 {
     public partial class AnaMenu : Form
     {
-        public AnaMenu()
+        public AnaMenu(int kullaniciId)
         {
             InitializeComponent();
         }

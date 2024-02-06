@@ -181,6 +181,7 @@
             btnKayıtOl.TabIndex = 15;
             btnKayıtOl.Text = "KAYIT OL";
             btnKayıtOl.UseVisualStyleBackColor = true;
+            btnKayıtOl.Click += btnKayıtOl_Click;
             // 
             // KayitOlma
             // 

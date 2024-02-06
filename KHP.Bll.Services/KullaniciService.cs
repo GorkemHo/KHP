@@ -7,6 +7,8 @@ using KHP.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Intrinsics.Arm;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,6 +23,29 @@ namespace KHP.Bll.Services
             _kullaniciRepo = new KullaniciRepo();
             _ogunRepo = new OgunRepo();
         }
+
+        public bool Authanticator(string eposta, string sifre)
+        {
+            Kullanici kullanici= GetByUsername(eposta);
+            if (kullanici==null&&kullanici.Sifre!=sifre )
+            {
+                return false;   
+            }
+            return true;
+        }
+        public Kullanici GetByUsername(string username) { return _kullaniciRepo.GetAll().FirstOrDefault(a => a.Eposta == username); }
+        public bool CheckIfPasswordOk(string sifre ,string sifretekrar)
+        {
+             
+            return sifre.Length >= 8 && sifre.Count(char.IsUpper) >= 2 && sifre.Count(char.IsLower)>=3 && sifre.Equals(sifretekrar);
+            
+        }
+
+        public bool CheckIfUserNameExist(string eposta)
+        {
+            return _kullaniciRepo.GetAll().Any(a => a.Eposta == eposta);
+        }
+
         public int Create(KullaniciCreateVm createVm)
         {
             Kullanici kullanici = new Kullanici()
@@ -33,6 +58,15 @@ namespace KHP.Bll.Services
                 DogumTarihi = createVm.DogumTarihi,
             };
             return _kullaniciRepo.Create(kullanici);
+        }
+
+        public string sha256(string sifre)
+        {
+            using (SHA256 sha256 = SHA256Managed.Create()  )
+            {
+                return string.Concat(sha256.ComputeHash(Encoding.UTF8.GetBytes(sifre)).Select(item => item.ToString("x2")));
+                
+            }
         }
 
         public List<OgunListVm> TarihlerArasiKisiKategoriListeleme(DateTime baslangic, DateTime bitis, int id)
