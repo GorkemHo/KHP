@@ -28,12 +28,89 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            txtEposta = new TextBox();
+            txtSifre = new TextBox();
+            label1 = new Label();
+            label2 = new Label();
+            lblKayıtOl = new LinkLabel();
+            btnGirisYap = new Button();
+            SuspendLayout();
+            // 
+            // txtEposta
+            // 
+            txtEposta.Location = new Point(113, 72);
+            txtEposta.Name = "txtEposta";
+            txtEposta.Size = new Size(156, 23);
+            txtEposta.TabIndex = 0;
+            // 
+            // txtSifre
+            // 
+            txtSifre.Location = new Point(113, 129);
+            txtSifre.Name = "txtSifre";
+            txtSifre.Size = new Size(156, 23);
+            txtSifre.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(52, 80);
+            label1.Name = "label1";
+            label1.Size = new Size(47, 15);
+            label1.TabIndex = 2;
+            label1.Text = "E-Posta";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(52, 137);
+            label2.Name = "label2";
+            label2.Size = new Size(30, 15);
+            label2.TabIndex = 3;
+            label2.Text = "Şifre";
+            // 
+            // lblKayıtOl
+            // 
+            lblKayıtOl.AutoSize = true;
+            lblKayıtOl.Location = new Point(157, 228);
+            lblKayıtOl.Name = "lblKayıtOl";
+            lblKayıtOl.Size = new Size(55, 15);
+            lblKayıtOl.TabIndex = 4;
+            lblKayıtOl.TabStop = true;
+            lblKayıtOl.Text = "KAYIT OL";
+            // 
+            // btnGirisYap
+            // 
+            btnGirisYap.Location = new Point(126, 176);
+            btnGirisYap.Name = "btnGirisYap";
+            btnGirisYap.Size = new Size(127, 32);
+            btnGirisYap.TabIndex = 5;
+            btnGirisYap.Text = "Giris Yap";
+            btnGirisYap.UseVisualStyleBackColor = true;
+            // 
+            // GirisEkrani
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(338, 336);
+            Controls.Add(btnGirisYap);
+            Controls.Add(lblKayıtOl);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(txtSifre);
+            Controls.Add(txtEposta);
+            Name = "GirisEkrani";
+            Text = "Form1";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private TextBox txtEposta;
+        private TextBox txtSifre;
+        private Label label1;
+        private Label label2;
+        private LinkLabel lblKayıtOl;
+        private Button btnGirisYap;
     }
 }
