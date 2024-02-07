@@ -141,17 +141,17 @@ namespace KHP.Bll.Services
             var kullaniciGidaUpdate = _kullaniciGidaRepo.GetById(vm.Id);
             if (kullaniciGidaUpdate != null)
             {
-                vm.GidaAdi = kullaniciGidaUpdate.GidaAdi;
-                vm.GidaTuru = kullaniciGidaUpdate.GidaTuru;
-                vm.Kalori = kullaniciGidaUpdate.Kalori;
-                vm.Porsiyon = kullaniciGidaUpdate.Porsiyon;
-                vm.OgunAdi = kullaniciGidaUpdate.OgunAdi;
-                vm.OlusturulmaTarihi = kullaniciGidaUpdate.OlusturulmaTarihi;
-
+                kullaniciGidaUpdate.KullaniciId = vm.KullaniciId;
+                kullaniciGidaUpdate.GidaAdi = vm.GidaAdi;
+                kullaniciGidaUpdate.GidaTuru = vm.GidaTuru;
+                kullaniciGidaUpdate.Kalori = vm.Kalori;
+                kullaniciGidaUpdate.Porsiyon = vm.Porsiyon;
+                kullaniciGidaUpdate.OgunAdi = vm.OgunAdi;
+                kullaniciGidaUpdate.OlusturulmaTarihi = vm.OlusturulmaTarihi;
                 return _kullaniciGidaRepo.Update(kullaniciGidaUpdate);
             }
-
             return 0;
+            
 
         }
     }
