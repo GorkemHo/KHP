@@ -1,4 +1,5 @@
 ﻿using KHP.Entities;
+using KHP.Entities.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -19,7 +20,7 @@ namespace KHP.Dal.SeedDatas
             //                       ID = 1,
             //                       Ad = "Salata",
             //                       Kalori = 152,
-            //                       GidaTuru = "Yiyecek",
+            //                       GidaTuru = GidaTurleri.Yiyecek,
             //                       OgunID = 1
             //                   },
             //               new Gida
