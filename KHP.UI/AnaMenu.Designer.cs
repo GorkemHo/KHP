@@ -89,6 +89,7 @@
             // 
             txtSecilenUrunAdi.Location = new Point(14, 300);
             txtSecilenUrunAdi.Name = "txtSecilenUrunAdi";
+            txtSecilenUrunAdi.ReadOnly = true;
             txtSecilenUrunAdi.Size = new Size(100, 23);
             txtSecilenUrunAdi.TabIndex = 4;
             // 
