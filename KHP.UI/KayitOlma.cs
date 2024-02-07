@@ -30,15 +30,15 @@ namespace KHP.UI
         private void btnKayıtOl_Click(object sender, EventArgs e)
         {
 
-            string kullaniciAdi=txtEposta.Text.Trim();
+            string kullaniciAdi = txtEposta.Text.Trim();
             string sifre = txtSifre.Text.Trim();
-            string sifretekrar=txtTekrarSifre.Text.Trim();
+            string sifretekrar = txtTekrarSifre.Text.Trim();
 
 
 
             if (!_service.CheckIfUserNameExist(kullaniciAdi))
             {
-                if(_service.CheckIfPasswordOk(sifre,sifretekrar)) 
+                if (_service.CheckIfPasswordOk(sifre, sifretekrar))
                 {
                     string hashlisifre = _service.sha256(sifre);
                     var createVm = new KullaniciCreateVm
@@ -55,24 +55,25 @@ namespace KHP.UI
                     if (result > 0)
                     {
                         MessageBox.Show("Kayıt Başarılı");
+                        this.Close();
                     }
-                    
-                    
+
+
                 }
                 else
                 {
                     MessageBox.Show("Sifre kriterleri karşılamadıgı için kayıt başarısız!");
                 }
-                
+
             }
             else
             {
                 MessageBox.Show("Bu kullanıcı mevcuttur");
             }
-            
-            
-            
-            
+
+
+
+
         }
     }
 }

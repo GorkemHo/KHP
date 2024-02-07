@@ -27,7 +27,7 @@ namespace KHP.Bll.Services
                 Ad = vm.Ad,
                 OlusturulmaTarihi = vm.OlusturulmaTarihi,
                 KullaniciID= vm.KullaniciID,
-                Yemekler = vm.Yemekler
+                //Yemekler = vm.Yemekler
 
             };
             return _ogunRepo.Create (ogun);
@@ -76,8 +76,8 @@ namespace KHP.Bll.Services
         {
             List<OgunListVm> ogunList = _ogunRepo.GetAll().Where(x => x.OlusturulmaTarihi == tarih && x.KullaniciID == Id).Select(z => new OgunListVm
             {
-                //Ad = z.Ad,
-               // OlusturulmaTarihi = z.OlusturulmaTarihi,
+                Ad = z.Ad,
+                OlusturulmaTarihi = z.OlusturulmaTarihi,
                 Yemekler=z.Yemekler
                 
             }).ToList();

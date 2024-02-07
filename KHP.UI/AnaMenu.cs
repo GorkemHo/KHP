@@ -34,6 +34,7 @@ namespace KHP.UI
         }
         private void AnaMenu_Load(object sender, EventArgs e)
         {
+
             dgwGidalar.DataSource = _gidaService.GetAll();
             SorguButonlariniKapat();
             DetayButonlariniKapat();
@@ -43,10 +44,14 @@ namespace KHP.UI
         {
             string aramaMetni = txtAramaMetni.Text;
 
-            if (!string.IsNullOrEmpty(aramaMetni))
+            if (aramaMetni is not null)
             {
                 List<GidaListVm> arananGidalar = _gidaService.GetAll().Where(gida => gida.Ad.ToLower().Contains(aramaMetni.ToLower())).ToList();
                 dgwGidalar.DataSource = arananGidalar;
+            }
+            else
+            {
+                dgwGidalar.DataSource = _gidaService.GetAll();
             }
         }
 
@@ -62,6 +67,9 @@ namespace KHP.UI
 
                 txtSecilenUrunAdi.Text = selectedRow.Cells["Ad"].Value.ToString();
                 txtSecilenUrunPorsiyon.Text = selectedRow.Cells["Porsiyon"].Value.ToString();
+
+                decimal kalori = (decimal)dgwGidalar.CurrentRow.Cells["Kalori"].Value;
+                lblSecilenKalorisi.Text = $" {kalori} kalori";
             }
         }
 
@@ -181,7 +189,11 @@ namespace KHP.UI
 
         private void dtpDetayTarih_ValueChanged(object sender, EventArgs e)
         {
+            dgwDetaylar.DataSource = null;
             dgwDetaylar.DataSource = _ogunService.TarihtekiOgunuGoster(dtpDetayTarih.Value, _kullaniciId);
+            
         }
+
+        
     }
 }

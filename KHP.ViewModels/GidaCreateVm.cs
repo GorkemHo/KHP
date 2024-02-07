@@ -7,15 +7,14 @@ using System.Threading.Tasks;
 
 namespace KHP.ViewModels
 {
-    public class GidaListVm
+    public class GidaCreateVm
     {
-        public int Id { get; set; }
         public string Ad { get; set; }
         public decimal Kalori { get; set; }
         public decimal Porsiyon { get; set; }
         public GidaTurleri GidaTuru { get; set; }
-        public int? OgunID { get; set; }
-        public DateTime OlusturulmaTarihi { get; set; }
 
+        //FR
+        public int? OgunID { get; set; }
     }
 }

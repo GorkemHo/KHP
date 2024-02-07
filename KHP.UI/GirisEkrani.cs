@@ -30,6 +30,7 @@ namespace KHP.UI
             {
                 AnaMenu ana= new AnaMenu(kullanici.ID);
                 ana.Show();
+                this.Hide();
                 MessageBox.Show("Giris Basarýlý");
             }
             

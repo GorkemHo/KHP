@@ -18,16 +18,18 @@ namespace KHP.Bll.Services
     {
         KullaniciRepo _kullaniciRepo;
         OgunRepo _ogunRepo;
+        Kullanici kullanici;
         public KullaniciService()
         {
             _kullaniciRepo = new KullaniciRepo();
             _ogunRepo = new OgunRepo();
+            kullanici = new Kullanici();
         }
 
         public bool Authanticator(string eposta, string sifre)
         {
-            Kullanici kullanici= GetByUsername(eposta);
-            if (kullanici==null&&kullanici.Sifre!=sifre )
+            Kullanici kullanici = GetByUsername(eposta);
+            if (kullanici==null || kullanici.Sifre!=sifre )
             {
                 return false;   
             }

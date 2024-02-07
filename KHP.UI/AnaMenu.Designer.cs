@@ -40,6 +40,7 @@
             btnRaporlarSayfasi = new Button();
             lblToplamKalori = new Label();
             groupBox1 = new GroupBox();
+            listView1 = new ListView();
             dgwDetaylar = new DataGridView();
             label9 = new Label();
             label3 = new Label();
@@ -55,6 +56,7 @@
             label8 = new Label();
             dgwGidalar = new DataGridView();
             dgwSecilenler = new DataGridView();
+            listBox1 = new ListBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgwDetaylar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgwGidalar).BeginInit();
@@ -63,7 +65,7 @@
             // 
             // txtAramaMetni
             // 
-            txtAramaMetni.Location = new Point(61, 86);
+            txtAramaMetni.Location = new Point(61, 51);
             txtAramaMetni.Name = "txtAramaMetni";
             txtAramaMetni.Size = new Size(100, 23);
             txtAramaMetni.TabIndex = 0;
@@ -74,28 +76,28 @@
             cmbOgunSecme.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbOgunSecme.FormattingEnabled = true;
             cmbOgunSecme.Items.AddRange(new object[] { "Kahvalti", "OglenYemegi", "AksamYemegi", "AraOgun" });
-            cmbOgunSecme.Location = new Point(61, 141);
+            cmbOgunSecme.Location = new Point(61, 534);
             cmbOgunSecme.Name = "cmbOgunSecme";
             cmbOgunSecme.Size = new Size(121, 23);
             cmbOgunSecme.TabIndex = 1;
             // 
             // dtpOgunTarihi
             // 
-            dtpOgunTarihi.Location = new Point(237, 140);
+            dtpOgunTarihi.Location = new Point(206, 534);
             dtpOgunTarihi.Name = "dtpOgunTarihi";
             dtpOgunTarihi.Size = new Size(128, 23);
             dtpOgunTarihi.TabIndex = 2;
             // 
             // txtSecilenUrunAdi
             // 
-            txtSecilenUrunAdi.Location = new Point(61, 351);
+            txtSecilenUrunAdi.Location = new Point(62, 281);
             txtSecilenUrunAdi.Name = "txtSecilenUrunAdi";
             txtSecilenUrunAdi.Size = new Size(100, 23);
             txtSecilenUrunAdi.TabIndex = 4;
             // 
             // txtSecilenUrunPorsiyon
             // 
-            txtSecilenUrunPorsiyon.Location = new Point(190, 351);
+            txtSecilenUrunPorsiyon.Location = new Point(191, 281);
             txtSecilenUrunPorsiyon.Name = "txtSecilenUrunPorsiyon";
             txtSecilenUrunPorsiyon.Size = new Size(100, 23);
             txtSecilenUrunPorsiyon.TabIndex = 4;
@@ -103,16 +105,17 @@
             // 
             // lblSecilenKalorisi
             // 
-            lblSecilenKalorisi.Location = new Point(296, 330);
+            lblSecilenKalorisi.BorderStyle = BorderStyle.FixedSingle;
+            lblSecilenKalorisi.Location = new Point(315, 257);
             lblSecilenKalorisi.Name = "lblSecilenKalorisi";
-            lblSecilenKalorisi.Size = new Size(123, 47);
+            lblSecilenKalorisi.Size = new Size(137, 47);
             lblSecilenKalorisi.TabIndex = 5;
             // 
             // btnSec
             // 
-            btnSec.Location = new Point(61, 380);
+            btnSec.Location = new Point(63, 310);
             btnSec.Name = "btnSec";
-            btnSec.Size = new Size(304, 34);
+            btnSec.Size = new Size(389, 34);
             btnSec.TabIndex = 6;
             btnSec.Text = "SEC";
             btnSec.UseVisualStyleBackColor = true;
@@ -122,7 +125,7 @@
             // 
             btnTemizle.Location = new Point(62, 573);
             btnTemizle.Name = "btnTemizle";
-            btnTemizle.Size = new Size(118, 40);
+            btnTemizle.Size = new Size(163, 40);
             btnTemizle.TabIndex = 7;
             btnTemizle.Text = "TEMIZLE";
             btnTemizle.UseVisualStyleBackColor = true;
@@ -130,9 +133,9 @@
             // 
             // btnSecilenleriKaydet
             // 
-            btnSecilenleriKaydet.Location = new Point(237, 573);
+            btnSecilenleriKaydet.Location = new Point(288, 573);
             btnSecilenleriKaydet.Name = "btnSecilenleriKaydet";
-            btnSecilenleriKaydet.Size = new Size(130, 40);
+            btnSecilenleriKaydet.Size = new Size(164, 40);
             btnSecilenleriKaydet.TabIndex = 8;
             btnSecilenleriKaydet.Text = "SECILENLERI KAYDET";
             btnSecilenleriKaydet.UseVisualStyleBackColor = true;
@@ -142,7 +145,7 @@
             // 
             btnRaporlarSayfasi.Location = new Point(155, 631);
             btnRaporlarSayfasi.Name = "btnRaporlarSayfasi";
-            btnRaporlarSayfasi.Size = new Size(106, 44);
+            btnRaporlarSayfasi.Size = new Size(199, 44);
             btnRaporlarSayfasi.TabIndex = 9;
             btnRaporlarSayfasi.Text = "RAPORLAR SAYFASI";
             btnRaporlarSayfasi.UseVisualStyleBackColor = true;
@@ -151,7 +154,7 @@
             // lblToplamKalori
             // 
             lblToplamKalori.AutoSize = true;
-            lblToplamKalori.Location = new Point(373, 478);
+            lblToplamKalori.Location = new Point(373, 537);
             lblToplamKalori.Name = "lblToplamKalori";
             lblToplamKalori.Size = new Size(79, 15);
             lblToplamKalori.TabIndex = 10;
@@ -159,6 +162,8 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(listBox1);
+            groupBox1.Controls.Add(listView1);
             groupBox1.Controls.Add(dgwDetaylar);
             groupBox1.Controls.Add(label9);
             groupBox1.Controls.Add(label3);
@@ -167,27 +172,35 @@
             groupBox1.Controls.Add(btnListele);
             groupBox1.Controls.Add(btnEkle);
             groupBox1.Controls.Add(dtpDetayTarih);
-            groupBox1.Location = new Point(721, 90);
+            groupBox1.Location = new Point(559, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(482, 502);
+            groupBox1.Size = new Size(659, 701);
             groupBox1.TabIndex = 11;
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
             // 
+            // listView1
+            // 
+            listView1.Location = new Point(188, 327);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(392, 139);
+            listView1.TabIndex = 19;
+            listView1.UseCompatibleStateImageBehavior = false;
+            // 
             // dgwDetaylar
             // 
             dgwDetaylar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgwDetaylar.Location = new Point(6, 109);
+            dgwDetaylar.Location = new Point(6, 68);
             dgwDetaylar.Name = "dgwDetaylar";
             dgwDetaylar.RowTemplate.Height = 25;
-            dgwDetaylar.Size = new Size(315, 156);
+            dgwDetaylar.Size = new Size(574, 211);
             dgwDetaylar.TabIndex = 18;
             dgwDetaylar.CellClick += dgwDetaylar_CellClick;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(37, 47);
+            label9.Location = new Point(7, 21);
             label9.Name = "label9";
             label9.Size = new Size(231, 15);
             label9.TabIndex = 7;
@@ -196,7 +209,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(37, 272);
+            label3.Location = new Point(142, 292);
             label3.Name = "label3";
             label3.Size = new Size(150, 15);
             label3.TabIndex = 6;
@@ -204,7 +217,7 @@
             // 
             // btnGuncelle
             // 
-            btnGuncelle.Location = new Point(324, 244);
+            btnGuncelle.Location = new Point(7, 427);
             btnGuncelle.Name = "btnGuncelle";
             btnGuncelle.Size = new Size(105, 39);
             btnGuncelle.TabIndex = 5;
@@ -213,7 +226,7 @@
             // 
             // btnSil
             // 
-            btnSil.Location = new Point(324, 199);
+            btnSil.Location = new Point(7, 382);
             btnSil.Name = "btnSil";
             btnSil.Size = new Size(105, 39);
             btnSil.TabIndex = 4;
@@ -222,7 +235,7 @@
             // 
             // btnListele
             // 
-            btnListele.Location = new Point(324, 154);
+            btnListele.Location = new Point(7, 337);
             btnListele.Name = "btnListele";
             btnListele.Size = new Size(105, 39);
             btnListele.TabIndex = 3;
@@ -231,7 +244,7 @@
             // 
             // btnEkle
             // 
-            btnEkle.Location = new Point(324, 109);
+            btnEkle.Location = new Point(7, 292);
             btnEkle.Name = "btnEkle";
             btnEkle.Size = new Size(105, 39);
             btnEkle.TabIndex = 2;
@@ -240,7 +253,7 @@
             // 
             // dtpDetayTarih
             // 
-            dtpDetayTarih.Location = new Point(38, 65);
+            dtpDetayTarih.Location = new Point(7, 39);
             dtpDetayTarih.Name = "dtpDetayTarih";
             dtpDetayTarih.Size = new Size(200, 23);
             dtpDetayTarih.TabIndex = 0;
@@ -249,7 +262,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(62, 68);
+            label4.Location = new Point(62, 33);
             label4.Name = "label4";
             label4.Size = new Size(69, 15);
             label4.TabIndex = 12;
@@ -258,7 +271,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(62, 123);
+            label5.Location = new Point(62, 516);
             label5.Name = "label5";
             label5.Size = new Size(75, 15);
             label5.TabIndex = 13;
@@ -267,7 +280,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(239, 120);
+            label6.Location = new Point(208, 514);
             label6.Name = "label6";
             label6.Size = new Size(32, 15);
             label6.TabIndex = 14;
@@ -276,7 +289,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(190, 334);
+            label7.Location = new Point(191, 264);
             label7.Name = "label7";
             label7.Size = new Size(53, 15);
             label7.TabIndex = 15;
@@ -285,7 +298,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(61, 334);
+            label8.Location = new Point(62, 264);
             label8.Name = "label8";
             label8.Size = new Size(73, 15);
             label8.TabIndex = 16;
@@ -294,21 +307,30 @@
             // dgwGidalar
             // 
             dgwGidalar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgwGidalar.Location = new Point(61, 169);
+            dgwGidalar.Location = new Point(62, 80);
             dgwGidalar.Name = "dgwGidalar";
             dgwGidalar.RowTemplate.Height = 25;
-            dgwGidalar.Size = new Size(306, 150);
+            dgwGidalar.Size = new Size(390, 170);
             dgwGidalar.TabIndex = 17;
             dgwGidalar.CellClick += dgwGidalar_CellClick;
             // 
             // dgwSecilenler
             // 
             dgwSecilenler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgwSecilenler.Location = new Point(62, 420);
+            dgwSecilenler.Location = new Point(61, 359);
             dgwSecilenler.Name = "dgwSecilenler";
             dgwSecilenler.RowTemplate.Height = 25;
-            dgwSecilenler.Size = new Size(303, 150);
+            dgwSecilenler.Size = new Size(391, 150);
             dgwSecilenler.TabIndex = 18;
+            // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Location = new Point(142, 473);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(438, 124);
+            listBox1.TabIndex = 20;
             // 
             // AnaMenu
             // 
@@ -320,19 +342,19 @@
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
-            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(groupBox1);
+            Controls.Add(label5);
             Controls.Add(lblToplamKalori);
             Controls.Add(btnRaporlarSayfasi);
             Controls.Add(btnSecilenleriKaydet);
             Controls.Add(btnTemizle);
+            Controls.Add(dtpOgunTarihi);
+            Controls.Add(cmbOgunSecme);
             Controls.Add(btnSec);
             Controls.Add(lblSecilenKalorisi);
             Controls.Add(txtSecilenUrunPorsiyon);
             Controls.Add(txtSecilenUrunAdi);
-            Controls.Add(dtpOgunTarihi);
-            Controls.Add(cmbOgunSecme);
             Controls.Add(txtAramaMetni);
             Name = "AnaMenu";
             Text = "AnaMenu";
@@ -375,5 +397,7 @@
         private DataGridView dgwGidalar;
         private DataGridView dgwDetaylar;
         private DataGridView dgwSecilenler;
+        private ListView listView1;
+        private ListBox listBox1;
     }
 }
