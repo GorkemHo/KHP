@@ -16,6 +16,7 @@ namespace KHP.UI
 {
     public partial class AnaMenu : Form
     {
+        IKullaniciGidaService _kullaniciGidaService;
         IGidaService _gidaService;
         IKullaniciService _kullaniciService;
         IOgunService _ogunService;
@@ -31,6 +32,7 @@ namespace KHP.UI
             _ogunService = new OgunService();
             _kullaniciId = kullaniciId;
             secilenGidalar = new List<GidaEklemeVm>();
+            _kullaniciGidaService = new KullaniciGidaService();
         }
         private void AnaMenu_Load(object sender, EventArgs e)
         {
@@ -69,7 +71,7 @@ namespace KHP.UI
         {
             secilenGidalar.Add(new GidaEklemeVm
             {
-                
+                Id = _kullaniciId,
                 GidaAdi = txtSecilenUrunAdi.Text,
                 Porsiyon = Convert.ToDecimal(txtSecilenUrunPorsiyon.Text),
                 Kalori = Convert.ToDecimal(txtSecilenUrunPorsiyon.Text) * (decimal)dgwGidalar.CurrentRow.Cells["Kalori"].Value,
@@ -89,21 +91,26 @@ namespace KHP.UI
         private void btnSecilenleriKaydet_Click(object sender, EventArgs e)
         {
             if (secilenGidalar != null)
-            {
-                var OgunVm = new OgunCreateVm
+            {    
+                
+                foreach (var item in secilenGidalar)
                 {
-                    Ad = cmbOgunSecme.SelectedIndex.ToString(),
-                    KullaniciID = _kullaniciId,
-                    OlusturulmaTarihi = dtpOgunTarihi.Value,
-                    //Yemekler = secilenGidalar.Cast<Gida>().ToList()
-
-                };
-                _ogunService.Create(OgunVm);
-                MessageBox.Show("Create islemi basarili!");
+                    var kullaniciGida = new KullaniciGidaCreateVm
+                    {
+                        KullaniciId = item.Id,
+                        OgunAdi = item.OgunAdi,
+                        GidaAdi = item.GidaAdi,                        
+                        Kalori = item.Kalori,
+                        GidaTuru = item.GidaTuru,
+                        Porsiyon = item.Porsiyon,
+                        OlusturulmaTarihi = item.OlusturulmaTarihi                        
+                    };
+                    _kullaniciGidaService.Create(kullaniciGida);                    
+                }
+                MessageBox.Show("Kayit islemi basarili!");
                 secilenGidalar.Clear();
                 dgwSecilenler.DataSource = null;
             }
-
         }
 
         private void btnTemizle_Click_1(object sender, EventArgs e)
@@ -185,7 +192,7 @@ namespace KHP.UI
 
         private void dtpDetayTarih_ValueChanged(object sender, EventArgs e)
         {
-            dgwDetaylar.DataSource = _ogunService.TarihtekiOgunuGoster(dtpDetayTarih.Value, _kullaniciId);
+            dgwDetaylar.DataSource = _kullaniciGidaService.GetAll().Where(x=>x.KullaniciId == _kullaniciId).ToList();
         }
     }
 }

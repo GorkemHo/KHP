@@ -1,4 +1,4 @@
-﻿using KHP.Entities.Enums;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,6 @@ namespace KHP.ViewModels
         public decimal Kalori { get; set; }
         public decimal Porsiyon { get; set; }   
         public string GidaTuru { get; set; }
-        public int? OgunID { get; set; }
-        public DateTime OlusturulmaTarihi { get; set; }
+        
     }
 }

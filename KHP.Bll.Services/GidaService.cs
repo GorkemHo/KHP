@@ -30,8 +30,7 @@ namespace KHP.Bll.Services
                 Ad = g.Ad,
                 Kalori= g.Kalori,
                 Porsiyon = g.Porsiyon,
-                GidaTuru = g.GidaTuru,
-                OgunID = g.OgunID
+                GidaTuru = g.GidaTuru
             }).ToList();
             return _vm;
         }
@@ -43,8 +42,7 @@ namespace KHP.Bll.Services
                 Ad = gida.Ad,
                 Kalori = gida.Kalori,
                 Porsiyon = gida.Porsiyon,
-                GidaTuru= gida.GidaTuru,
-                OlusturulmaTarihi = gida.Ogun.OlusturulmaTarihi
+                GidaTuru= gida.GidaTuru
             }).ToList();
             return _vms;
         }
