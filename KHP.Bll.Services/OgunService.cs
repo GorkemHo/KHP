@@ -64,10 +64,14 @@ namespace KHP.Bll.Services
 
         public List<OgunListVm> TarihlerArasıOgunListesi(DateTime baslangic, DateTime bitis)
         {
-            for(int i = 0; i < 10; i++)
+            
+            List<OgunListVm> ogunList = _ogunRepo.GetAll().Where(x => x.OlusturulmaTarihi >= baslangic && x.OlusturulmaTarihi <= bitis).Select(z => new OgunListVm
             {
+                KullaniciID = z.KullaniciID,
                 Ad = z.Ad,
-                OlusturulmaTarihi = z.OlusturulmaTarihi,
+                OlusturulmaTarihi = z.OlusturulmaTarihi
+                
+
             }).ToList();
             return ogunList;
         }
