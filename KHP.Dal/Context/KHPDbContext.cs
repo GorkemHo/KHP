@@ -1,4 +1,6 @@
-﻿using KHP.Entities;
+﻿using KHP.Dal.EntityTypeConfigurations;
+using KHP.Dal.SeedDatas;
+using KHP.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,7 +18,7 @@ namespace KHP.Dal.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlServer(@"Server=DESKTOP-NNPAIJ5; Database=KHP; Uid=sa; Pwd=789;");
-            //optionsBuilder.UseSqlServer(@"Server=DESKTOP-JI3UVS4;Database=KHP;Uid=sa;Pwd=123;");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-JI3UVS4;Database=KHP;Uid=sa;Pwd=123;");
             
             //optionsBuilder.UseSqlServer(@"Server=G™RKEMH; Database=KHPDb; Uid=sa; Pwd=123");
         }

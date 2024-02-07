@@ -72,6 +72,7 @@ namespace KHP.UI
                 Ad = txtSecilenUrunAdi.Text,
                 Porsiyon = Convert.ToDecimal(txtSecilenUrunPorsiyon.Text),
                 Kalori = Convert.ToDecimal(txtSecilenUrunPorsiyon.Text) * (decimal)dgwGidalar.CurrentRow.Cells["Kalori"].Value
+                
             });
             txtSecilenUrunAdi.Clear();
             txtSecilenUrunPorsiyon.Clear();
@@ -91,7 +92,7 @@ namespace KHP.UI
                     Ad = cmbOgunSecme.SelectedIndex.ToString(),
                     KullaniciID = _kullaniciId,
                     OlusturulmaTarihi = dtpOgunTarihi.Value,
-                    //Yemekler = secilenGidalar.Cast<Gida>().ToList()
+                    Yemekler = secilenGidalar.Cast<Gida>().ToList()
 
                 };
                 _ogunService.Create(OgunVm);
