@@ -8,6 +8,7 @@ namespace KHP.ViewModels.KullaniciGidaVms
 {
     public class KullaniciGidaListVm
     {
+        public int Id { get; set; }
         public int KullaniciId { get; set; }
         public string GidaAdi { get; set; }
         public string GidaTuru { get; set; }

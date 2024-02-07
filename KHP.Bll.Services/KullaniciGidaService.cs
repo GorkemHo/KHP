@@ -50,6 +50,7 @@ namespace KHP.Bll.Services
         {
             List<KullaniciGidaListVm> kullaniciGidaList = _kullaniciGidaRepo.GetAll().Select(x => new KullaniciGidaListVm
             {
+                Id =x.ID,
                 KullaniciId = x.KullaniciId,
                 GidaAdi = x.GidaAdi,
                 GidaTuru = x.GidaTuru,

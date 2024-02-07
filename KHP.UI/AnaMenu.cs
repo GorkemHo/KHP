@@ -111,7 +111,6 @@ namespace KHP.UI
                 }
                 MessageBox.Show("Kayit islemi basarili!");
                 SorguTemizle();
-
             }
         }
 
@@ -130,23 +129,47 @@ namespace KHP.UI
         {
             SorguTemizle();
             SorguButonlariniKapat();
-            DetayButonlariniAc();            
+            DetayButonlariniAc();
+
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dgwDetaylar.Rows[e.RowIndex];
+
+                txtSecilenUrunAdi.Text = selectedRow.Cells["Ad"].Value.ToString();
+                txtSecilenUrunPorsiyon.Text = selectedRow.Cells["Porsiyon"].Value.ToString();
+                cmbOgunSecme.SelectedItem = selectedRow.Cells["OgunAdi"].Value.ToString();
+                dtpOgunTarihi.Value = Convert.ToDateTime(selectedRow.Cells["OlusturulmaTarihi"].Value);
+            }
         }
 
-        private void SorguTemizle()
+        private void btnGuncelle_Click(object sender, EventArgs e)
         {
-            txtAramaMetni.Clear();
-            cmbOgunSecme.SelectedIndex = 0;
-            dtpOgunTarihi.Value = DateTime.Now;
-            txtSecilenUrunAdi.Clear();
-            txtSecilenUrunPorsiyon.Clear();
-            secilenGidalar.Clear();
-            dgwGidalar.DataSource = _gidaService.GetAll();
-            lblSecilenKalorisi.Text = "";
-            dgwSecilenler.DataSource = null;
+            decimal carpanKalori = (decimal)dgwDetaylar.CurrentRow.Cells["Porsiyon"].Value;
+            var KullaniciGidaUpdate = new KullaniciGidaUpdateVm
+            {
+                Id = Convert.ToInt32(dgwDetaylar.CurrentRow.Cells["Id"].Value),
+                KullaniciId = _kullaniciId,
+                GidaAdi = txtSecilenUrunAdi.Text,
+                GidaTuru = dgwDetaylar.CurrentRow.Cells["GidaTuru"].Value.ToString(),
+                Porsiyon = Convert.ToDecimal(txtSecilenUrunPorsiyon.Text),
+                Kalori = Convert.ToDecimal(txtSecilenUrunPorsiyon.Text) * (decimal)dgwDetaylar.CurrentRow.Cells["Kalori"].Value / carpanKalori,
+                OgunAdi = Convert.ToString(cmbOgunSecme.SelectedItem),
+                OlusturulmaTarihi = dtpOgunTarihi.Value
+            };
+            _kullaniciGidaService.Update(KullaniciGidaUpdate);
         }
 
-        
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(dgwDetaylar.CurrentRow.Cells["Id"].Value);
+            _kullaniciGidaService.Delete(id);
+        }
+        private void btnListele_Click(object sender, EventArgs e)
+        {
+            dgwDetaylar.DataSource = null;
+            dgwDetaylar.DataSource = _kullaniciGidaService.GetAll().Where(x => x.KullaniciId == _kullaniciId && x.OlusturulmaTarihi == dtpDetayTarih.Value).ToList();
+        }    
+
 
         private void txtSecilenUrunPorsiyon_TextChanged(object sender, EventArgs e)
         {
@@ -168,6 +191,7 @@ namespace KHP.UI
 
         private void dtpDetayTarih_ValueChanged(object sender, EventArgs e)
         {
+            dgwDetaylar.DataSource = null;
             dgwDetaylar.DataSource = _kullaniciGidaService.GetAll().Where(x => x.KullaniciId == _kullaniciId && x.OlusturulmaTarihi == dtpDetayTarih.Value).ToList();
             DataGridViewGuncelleDetay();
         }
@@ -176,6 +200,19 @@ namespace KHP.UI
         {
             decimal toplamKalori = ToplamKaloriHesaplaSecilenGunIcin();
             lblSecilenGunToplamKalori.Text = $"Toplam Kalori: {toplamKalori} kalori";
+        }
+
+        private void SorguTemizle()
+        {
+            txtAramaMetni.Clear();
+            cmbOgunSecme.SelectedIndex = 0;
+            dtpOgunTarihi.Value = DateTime.Now;
+            txtSecilenUrunAdi.Clear();
+            txtSecilenUrunPorsiyon.Clear();
+            secilenGidalar.Clear();
+            dgwGidalar.DataSource = _gidaService.GetAll();
+            lblSecilenKalorisi.Text = "";
+            dgwSecilenler.DataSource = null;
         }
 
         private decimal ToplamKaloriHesaplaSecilenGunIcin()
@@ -242,5 +279,7 @@ namespace KHP.UI
             btnTemizle.Enabled = false;
             btnSecilenleriKaydet.Enabled = false;
         }
+
+        
     }
 }

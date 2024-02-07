@@ -207,6 +207,7 @@
             btnGuncelle.TabIndex = 5;
             btnGuncelle.Text = "GUNCELLE";
             btnGuncelle.UseVisualStyleBackColor = true;
+            btnGuncelle.Click += btnGuncelle_Click;
             // 
             // btnSil
             // 
@@ -216,6 +217,7 @@
             btnSil.TabIndex = 4;
             btnSil.Text = "SIL";
             btnSil.UseVisualStyleBackColor = true;
+            btnSil.Click += btnSil_Click;
             // 
             // btnListele
             // 
@@ -225,6 +227,7 @@
             btnListele.TabIndex = 3;
             btnListele.Text = "LISTELE";
             btnListele.UseVisualStyleBackColor = true;
+            btnListele.Click += btnListele_Click;
             // 
             // dtpDetayTarih
             // 
