@@ -38,7 +38,7 @@ namespace KHP.UI
 
             if (!_service.CheckIfUserNameExist(kullaniciAdi))
             {
-                if(!_service.CheckIfPasswordOk(sifre,sifretekrar)) 
+                if(_service.CheckIfPasswordOk(sifre,sifretekrar)) 
                 {
                     string hashlisifre = _service.sha256(sifre);
                     var createVm = new KullaniciCreateVm
