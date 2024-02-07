@@ -12,7 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KHP.Dal.Migrations
 {
     [DbContext(typeof(KHPDbContext))]
+<<<<<<<< HEAD:KHP.Dal/Migrations/20240207091445_init.Designer.cs
     [Migration("20240207091445_init")]
+========
+    [Migration("20240207094927_init")]
+>>>>>>>> origin/furkan:KHP.Dal/Migrations/20240207094927_init.Designer.cs
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,7 +64,11 @@ namespace KHP.Dal.Migrations
                         {
                             ID = 1,
                             Ad = "Salata",
+<<<<<<<< HEAD:KHP.Dal/Migrations/20240207091445_init.Designer.cs
                             GidaTuru = "Icecek",
+========
+                            GidaTuru = "Yiyecek",
+>>>>>>>> origin/furkan:KHP.Dal/Migrations/20240207094927_init.Designer.cs
                             Kalori = 152m,
                             Porsiyon = 1m
                         },

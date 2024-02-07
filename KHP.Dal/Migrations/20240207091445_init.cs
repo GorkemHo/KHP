@@ -74,7 +74,11 @@ namespace KHP.Dal.Migrations
             migrationBuilder.InsertData(
                 table: "Gidalar",
                 columns: new[] { "ID", "Ad", "GidaTuru", "Kalori", "OgunID", "Porsiyon" },
+<<<<<<<< HEAD:KHP.Dal/Migrations/20240207091445_init.cs
                 values: new object[] { 1, "Salata", "Icecek", 152m, null, 1m });
+========
+                values: new object[] { 1, "Salata", "Yiyecek", 152m, null, 1m });
+>>>>>>>> origin/furkan:KHP.Dal/Migrations/20240207094927_init.cs
 
             migrationBuilder.InsertData(
                 table: "Gidalar",

@@ -55,6 +55,7 @@ namespace KHP.UI
                     if (result > 0)
                     {
                         MessageBox.Show("Kayıt Başarılı");
+                        this.Close();
                     }
                     
                     
@@ -69,6 +70,7 @@ namespace KHP.UI
             {
                 MessageBox.Show("Bu kullanıcı mevcuttur");
             }
+            
             
             
             

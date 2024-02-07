@@ -28,10 +28,7 @@ namespace KHP.Dal.Context
             modelBuilder.ApplyConfiguration(new GidaTypeConfiguration());
             modelBuilder.ApplyConfiguration(new KullaniciTypeConfiguration());
             modelBuilder.ApplyConfiguration(new OgunTypeConfiguration());
-
-            modelBuilder.Entity<Gida>()
-                .Property(g => g.GidaTuru)
-                .HasConversion<string>();
+            
 
             modelBuilder.ApplyConfiguration(new GidalarSeedData());
 

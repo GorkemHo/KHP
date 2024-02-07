@@ -58,7 +58,7 @@ namespace KHP.Dal.Migrations
                         {
                             ID = 1,
                             Ad = "Salata",
-                            GidaTuru = "Icecek",
+                            GidaTuru = "Yiyecek",
                             Kalori = 152m,
                             Porsiyon = 1m
                         },
