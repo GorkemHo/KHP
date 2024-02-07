@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using KHP.Dal.EntityTypeConfigurations;
+using KHP.Dal.SeedDatas;
+using KHP.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;

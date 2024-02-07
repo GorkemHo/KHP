@@ -23,26 +23,26 @@ namespace KHP.Bll.Services
         {
             var ogun = new Ogun
             {
-                
+
                 Ad = vm.Ad,
                 OlusturulmaTarihi = vm.OlusturulmaTarihi,
-                KullaniciID= vm.KullaniciID,
+                KullaniciID = vm.KullaniciID,
                 Yemekler = vm.Yemekler
 
             };
-            return _ogunRepo.Create (ogun);
+            return _ogunRepo.Create(ogun);
         }
 
         public int Delete(int id)
         {
-            
+
             var ogun = _ogunRepo.GetById(id);
             if (ogun != null)
             {
                 return _ogunRepo.Delete(ogun);
             }
             return 0;
-            
+
         }
 
         public List<OgunListVm> GetAll()
@@ -52,7 +52,7 @@ namespace KHP.Bll.Services
                 KullaniciID = x.KullaniciID,
                 Ad = x.Ad,
                 OlusturulmaTarihi = x.OlusturulmaTarihi
-                
+
             }).ToList();
             return ogunList;
         }
@@ -67,7 +67,7 @@ namespace KHP.Bll.Services
             List<OgunListVm> ogunList = _ogunRepo.GetAll().Where(x => x.OlusturulmaTarihi > baslangic && x.OlusturulmaTarihi < bitis).Select(z => new OgunListVm
             {
                 Ad = z.Ad,
-                OlusturulmaTarihi=z.OlusturulmaTarihi,
+                OlusturulmaTarihi = z.OlusturulmaTarihi,
             }).ToList();
             return ogunList;
         }
@@ -76,22 +76,26 @@ namespace KHP.Bll.Services
         {
             List<OgunListVm> ogunList = _ogunRepo.GetAll().Where(x => x.OlusturulmaTarihi == tarih && x.KullaniciID == Id).Select(z => new OgunListVm
             {
+
                 //Ad = z.Ad,
-               // OlusturulmaTarihi = z.OlusturulmaTarihi,
-                Yemekler=z.Yemekler
-                
+                // OlusturulmaTarihi = z.OlusturulmaTarihi,
+                Yemekler = z.Yemekler
+
+
+
             }).ToList();
             return ogunList;
         }
 
+
         public int Update(OgunUpdateVm vm)
         {
-            var ogunUpdate=_ogunRepo.GetById(vm.KullaniciID);
+            var ogunUpdate = _ogunRepo.GetById(vm.KullaniciID);
             if (ogunUpdate != null)
             {
                 vm.Ad = ogunUpdate.Ad;
-                vm.OlusturulmaTarihi=ogunUpdate.OlusturulmaTarihi;
-                
+                vm.OlusturulmaTarihi = ogunUpdate.OlusturulmaTarihi;
+
             }
             return 0;
         }
