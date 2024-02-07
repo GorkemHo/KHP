@@ -39,6 +39,7 @@ namespace KHP.UI
             dgwGidalar.DataSource = _gidaService.GetAll();
             SorguButonlariniKapat();
             DetayButonlariniKapat();
+            cmbOgunSecme.SelectedIndex = 0;
         }
 
         private void txtAramaMetni_TextChanged(object sender, EventArgs e)
@@ -77,7 +78,7 @@ namespace KHP.UI
                 Kalori = Convert.ToDecimal(txtSecilenUrunPorsiyon.Text) * (decimal)dgwGidalar.CurrentRow.Cells["Kalori"].Value,
                 GidaTuru = (string)dgwGidalar.CurrentRow.Cells["GidaTuru"].Value,
                 OlusturulmaTarihi = dtpOgunTarihi.Value,
-                OgunAdi = cmbOgunSecme.SelectedIndex.ToString()
+                OgunAdi = cmbOgunSecme.SelectedItem.ToString()
             });
             txtSecilenUrunAdi.Clear();
             txtSecilenUrunPorsiyon.Clear();
@@ -91,25 +92,25 @@ namespace KHP.UI
         private void btnSecilenleriKaydet_Click(object sender, EventArgs e)
         {
             if (secilenGidalar != null)
-            {    
-                
+            {
+
                 foreach (var item in secilenGidalar)
                 {
                     var kullaniciGida = new KullaniciGidaCreateVm
                     {
                         KullaniciId = item.Id,
                         OgunAdi = item.OgunAdi,
-                        GidaAdi = item.GidaAdi,                        
+                        GidaAdi = item.GidaAdi,
                         Kalori = item.Kalori,
                         GidaTuru = item.GidaTuru,
                         Porsiyon = item.Porsiyon,
-                        OlusturulmaTarihi = item.OlusturulmaTarihi                        
+                        OlusturulmaTarihi = item.OlusturulmaTarihi
                     };
-                    _kullaniciGidaService.Create(kullaniciGida);                    
+                    _kullaniciGidaService.Create(kullaniciGida);
                 }
                 MessageBox.Show("Kayit islemi basarili!");
-                secilenGidalar.Clear();
-                dgwSecilenler.DataSource = null;
+                SorguTemizle();
+
             }
         }
 
@@ -126,21 +127,88 @@ namespace KHP.UI
 
         private void dgwDetaylar_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            SorguButonlariniKapat();
-            DetayButonlariniAc();
             SorguTemizle();
+            SorguButonlariniKapat();
+            DetayButonlariniAc();            
         }
 
         private void SorguTemizle()
         {
             txtAramaMetni.Clear();
-            cmbOgunSecme.SelectedIndex = -1;
+            cmbOgunSecme.SelectedIndex = 0;
             dtpOgunTarihi.Value = DateTime.Now;
             txtSecilenUrunAdi.Clear();
             txtSecilenUrunPorsiyon.Clear();
             secilenGidalar.Clear();
             dgwGidalar.DataSource = _gidaService.GetAll();
             lblSecilenKalorisi.Text = "";
+            dgwSecilenler.DataSource = null;
+        }
+
+        
+
+        private void txtSecilenUrunPorsiyon_TextChanged(object sender, EventArgs e)
+        {
+            if (decimal.TryParse(txtSecilenUrunPorsiyon.Text, out decimal porsiyon))
+            {
+                decimal kalori = porsiyon * (decimal)dgwGidalar.CurrentRow.Cells["Kalori"].Value;
+                lblSecilenKalorisi.Text = $" {kalori} kalori";
+            }
+            else
+            {
+                lblSecilenKalorisi.Text = "Geçersiz porsiyon değeri";
+            }
+
+        }
+        private void dgwSecilenler_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewGuncelleSecilenler();
+        }
+
+        private void dtpDetayTarih_ValueChanged(object sender, EventArgs e)
+        {
+            dgwDetaylar.DataSource = _kullaniciGidaService.GetAll().Where(x => x.KullaniciId == _kullaniciId && x.OlusturulmaTarihi == dtpDetayTarih.Value).ToList();
+            DataGridViewGuncelleDetay();
+        }
+
+        private void DataGridViewGuncelleDetay()
+        {
+            decimal toplamKalori = ToplamKaloriHesaplaSecilenGunIcin();
+            lblSecilenGunToplamKalori.Text = $"Toplam Kalori: {toplamKalori} kalori";
+        }
+
+        private decimal ToplamKaloriHesaplaSecilenGunIcin()
+        {
+            decimal toplamKalori = 0;
+
+            foreach (DataGridViewRow row in dgwDetaylar.Rows)
+            {
+                if (row.Cells["Kalori"].Value != null && decimal.TryParse(row.Cells["Kalori"].Value.ToString(), out decimal kalori))
+                {
+                    toplamKalori += kalori;
+                }
+            }
+            return toplamKalori;
+        }
+
+        private void DataGridViewGuncelleSecilenler()
+        {
+            decimal toplamKalori = ToplamKaloriHesaplaSecilenlerIcin();
+            lblToplamKalori.Text = $"Toplam Kalori: {toplamKalori} kalori";
+        }
+
+        private decimal ToplamKaloriHesaplaSecilenlerIcin()
+        {
+            decimal toplamKalori = 0;
+
+            foreach (DataGridViewRow row in dgwGidalar.Rows)
+            {
+                if (row.Cells["Kalori"].Value != null && decimal.TryParse(row.Cells["Kalori"].Value.ToString(), out decimal kalori))
+                {
+                    toplamKalori += kalori;
+                }
+            }
+            return toplamKalori;
         }
 
         private void DetayButonlariniAc()
@@ -174,25 +242,6 @@ namespace KHP.UI
             btnSec.Enabled = false;
             btnTemizle.Enabled = false;
             btnSecilenleriKaydet.Enabled = false;
-        }
-
-        private void txtSecilenUrunPorsiyon_TextChanged(object sender, EventArgs e)
-        {
-            if (decimal.TryParse(txtSecilenUrunPorsiyon.Text, out decimal porsiyon))
-            {
-                decimal kalori = porsiyon * (decimal)dgwGidalar.CurrentRow.Cells["Kalori"].Value;
-                lblSecilenKalorisi.Text = $" {kalori} kalori";
-            }
-            else
-            {
-                lblSecilenKalorisi.Text = "Geçersiz porsiyon değeri";
-            }
-
-        }
-
-        private void dtpDetayTarih_ValueChanged(object sender, EventArgs e)
-        {
-            dgwDetaylar.DataSource = _kullaniciGidaService.GetAll().Where(x=>x.KullaniciId == _kullaniciId).ToList();
         }
     }
 }
