@@ -25,7 +25,10 @@ namespace KHP.Bll.Services
             {
                 
                 Ad = vm.Ad,
-                OlusturulmaTarihi = vm.OlusturulmaTarihi
+                OlusturulmaTarihi = vm.OlusturulmaTarihi,
+                KullaniciID= vm.KullaniciID,
+                Yemekler = vm.Yemekler
+
             };
             return _ogunRepo.Create (ogun);
         }
@@ -65,6 +68,18 @@ namespace KHP.Bll.Services
             {
                 Ad = z.Ad,
                 OlusturulmaTarihi=z.OlusturulmaTarihi,
+            }).ToList();
+            return ogunList;
+        }
+
+        public List<OgunListVm> TarihtekiOgunuGoster(DateTime tarih, int Id)
+        {
+            List<OgunListVm> ogunList = _ogunRepo.GetAll().Where(x => x.OlusturulmaTarihi == tarih && x.KullaniciID == Id).Select(z => new OgunListVm
+            {
+                //Ad = z.Ad,
+               // OlusturulmaTarihi = z.OlusturulmaTarihi,
+                Yemekler=z.Yemekler
+                
             }).ToList();
             return ogunList;
         }

@@ -35,6 +35,8 @@ namespace KHP.UI
         private void AnaMenu_Load(object sender, EventArgs e)
         {
             dgwGidalar.DataSource = _gidaService.GetAll();
+            SorguButonlariniKapat();
+            DetayButonlariniKapat();
         }
 
         private void txtAramaMetni_TextChanged(object sender, EventArgs e)
@@ -52,12 +54,14 @@ namespace KHP.UI
 
         private void dgwGidalar_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            SorguButonlariniAc();
+
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow selectedRow = dgwGidalar.Rows[e.RowIndex];
 
                 txtSecilenUrunAdi.Text = selectedRow.Cells["Ad"].Value.ToString();
-                txtSecilenUrunPorsiyon.Text = selectedRow.Cells["Porsiyon"].Value.ToString();                
+                txtSecilenUrunPorsiyon.Text = selectedRow.Cells["Porsiyon"].Value.ToString();
             }
         }
 
@@ -73,6 +77,8 @@ namespace KHP.UI
             txtSecilenUrunPorsiyon.Clear();
             dgwGidalar.DataSource = null;
             dgwGidalar.DataSource = _gidaService.GetAll();
+            dgwSecilenler.DataSource = null;
+            dgwSecilenler.DataSource = secilenGidalar;
         }
 
 
@@ -85,25 +91,20 @@ namespace KHP.UI
                     Ad = cmbOgunSecme.SelectedIndex.ToString(),
                     KullaniciID = _kullaniciId,
                     OlusturulmaTarihi = dtpOgunTarihi.Value,
-                    Yemekler = secilenGidalar.Cast<Gida>().ToList()
+                    //Yemekler = secilenGidalar.Cast<Gida>().ToList()
 
                 };
                 _ogunService.Create(OgunVm);
                 MessageBox.Show("Create islemi basarili!");
+                secilenGidalar.Clear();
+                dgwSecilenler.DataSource = null;
             }
 
         }
 
         private void btnTemizle_Click_1(object sender, EventArgs e)
         {
-            txtAramaMetni.Clear();
-            cmbOgunSecme.SelectedIndex = -1;
-            dtpOgunTarihi.Value = DateTime.Now;
-            txtSecilenUrunAdi.Clear();
-            txtSecilenUrunPorsiyon.Clear();
-            secilenGidalar.Clear();
-            lstSecilenler.Items.Clear();
-            dgwGidalar.DataSource = _gidaService.GetAll();
+            SorguTemizle();
         }
 
         private void btnRaporlarSayfasi_Click_1(object sender, EventArgs e)
@@ -116,6 +117,19 @@ namespace KHP.UI
         {
             SorguButonlariniKapat();
             DetayButonlariniAc();
+            SorguTemizle();
+        }
+
+        private void SorguTemizle()
+        {
+            txtAramaMetni.Clear();
+            cmbOgunSecme.SelectedIndex = -1;
+            dtpOgunTarihi.Value = DateTime.Now;
+            txtSecilenUrunAdi.Clear();
+            txtSecilenUrunPorsiyon.Clear();
+            secilenGidalar.Clear();
+            dgwGidalar.DataSource = _gidaService.GetAll();
+            lblSecilenKalorisi.Text = "";
         }
 
         private void DetayButonlariniAc()
@@ -126,10 +140,26 @@ namespace KHP.UI
             btnGuncelle.Enabled = true;
         }
 
+        private void DetayButonlariniKapat()
+        {
+            btnEkle.Enabled = false;
+            btnListele.Enabled = false;
+            btnSil.Enabled = false;
+            btnGuncelle.Enabled = false;
+        }
+
+
+        private void SorguButonlariniAc()
+        {
+            txtAramaMetni.Enabled = true;
+            btnSec.Enabled = true;
+            btnTemizle.Enabled = true;
+            btnSecilenleriKaydet.Enabled = true;
+        }
+
         private void SorguButonlariniKapat()
         {
             txtAramaMetni.Enabled = false;
-            lstSecilenler.Enabled = false;
             btnSec.Enabled = false;
             btnTemizle.Enabled = false;
             btnSecilenleriKaydet.Enabled = false;
@@ -143,10 +173,15 @@ namespace KHP.UI
                 lblSecilenKalorisi.Text = $" {kalori} kalori";
             }
             else
-            {                
+            {
                 lblSecilenKalorisi.Text = "Geçersiz porsiyon değeri";
             }
 
+        }
+
+        private void dtpDetayTarih_ValueChanged(object sender, EventArgs e)
+        {
+            dgwDetaylar.DataSource = _ogunService.TarihtekiOgunuGoster(dtpDetayTarih.Value, _kullaniciId);
         }
     }
 }
