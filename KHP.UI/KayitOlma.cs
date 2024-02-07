@@ -70,10 +70,11 @@ namespace KHP.UI
             {
                 MessageBox.Show("Bu kullanıcı mevcuttur");
             }
-
-
-
-
+            
+            
+            
+            
+            
         }
     }
 }

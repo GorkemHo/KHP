@@ -15,9 +15,10 @@ namespace KHP.Dal.Context
         public DbSet<Kullanici> Kullanicilar { get; set; }
         public DbSet<Gida> Gidalar { get; set; }
         public DbSet<Ogun> Ogunler { get; set; }
+        public DbSet<KullaniciGida> KullaniciGidalar { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer(@"Server=DESKTOP-NNPAIJ5; Database=KHP; Uid=sa; Pwd=789;");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-NNPAIJ5; Database=KHP; Uid=sa; Pwd=789;");
             //optionsBuilder.UseSqlServer(@"Server=DESKTOP-JI3UVS4;Database=KHP;Uid=sa;Pwd=123;");
             
             optionsBuilder.UseSqlServer(@"Server=G™RKEMH; Database=KHPDb; Uid=sa; Pwd=123");
@@ -28,10 +29,7 @@ namespace KHP.Dal.Context
             modelBuilder.ApplyConfiguration(new GidaTypeConfiguration());
             modelBuilder.ApplyConfiguration(new KullaniciTypeConfiguration());
             modelBuilder.ApplyConfiguration(new OgunTypeConfiguration());
-
-            modelBuilder.Entity<Gida>()
-                .Property(g => g.GidaTuru)
-                .HasConversion<string>();
+            
 
             modelBuilder.ApplyConfiguration(new GidalarSeedData());
 

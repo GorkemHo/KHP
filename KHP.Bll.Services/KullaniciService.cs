@@ -28,8 +28,8 @@ namespace KHP.Bll.Services
 
         public bool Authanticator(string eposta, string sifre)
         {
-            Kullanici kullanici = GetByUsername(eposta);
-            if (kullanici==null || kullanici.Sifre!=sifre )
+            Kullanici kullanici= GetByUsername(eposta);
+            if (kullanici==null||kullanici.Sifre!=sifre )
             {
                 return false;   
             }
