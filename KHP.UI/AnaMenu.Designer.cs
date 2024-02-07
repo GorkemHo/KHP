@@ -35,11 +35,10 @@
             txtSecilenUrunPorsiyon = new TextBox();
             lblSecilenKalorisi = new Label();
             btnSec = new Button();
-            lstSecilenler = new ListView();
             btnTemizle = new Button();
             btnSecilenleriKaydet = new Button();
             btnRaporlarSayfasi = new Button();
-            label2 = new Label();
+            lblToplamKalori = new Label();
             groupBox1 = new GroupBox();
             dgwDetaylar = new DataGridView();
             label9 = new Label();
@@ -55,9 +54,11 @@
             label7 = new Label();
             label8 = new Label();
             dgwGidalar = new DataGridView();
+            dgwSecilenler = new DataGridView();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgwDetaylar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgwGidalar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgwSecilenler).BeginInit();
             SuspendLayout();
             // 
             // txtAramaMetni
@@ -117,14 +118,6 @@
             btnSec.UseVisualStyleBackColor = true;
             btnSec.Click += btnSec_Click;
             // 
-            // lstSecilenler
-            // 
-            lstSecilenler.Location = new Point(62, 431);
-            lstSecilenler.Name = "lstSecilenler";
-            lstSecilenler.Size = new Size(305, 110);
-            lstSecilenler.TabIndex = 3;
-            lstSecilenler.UseCompatibleStateImageBehavior = false;
-            // 
             // btnTemizle
             // 
             btnTemizle.Location = new Point(62, 573);
@@ -155,14 +148,14 @@
             btnRaporlarSayfasi.UseVisualStyleBackColor = true;
             btnRaporlarSayfasi.Click += btnRaporlarSayfasi_Click_1;
             // 
-            // label2
+            // lblToplamKalori
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(373, 478);
-            label2.Name = "label2";
-            label2.Size = new Size(79, 15);
-            label2.TabIndex = 10;
-            label2.Text = "Toplam Kalori";
+            lblToplamKalori.AutoSize = true;
+            lblToplamKalori.Location = new Point(373, 478);
+            lblToplamKalori.Name = "lblToplamKalori";
+            lblToplamKalori.Size = new Size(79, 15);
+            lblToplamKalori.TabIndex = 10;
+            lblToplamKalori.Text = "Toplam Kalori";
             // 
             // groupBox1
             // 
@@ -251,6 +244,7 @@
             dtpDetayTarih.Name = "dtpDetayTarih";
             dtpDetayTarih.Size = new Size(200, 23);
             dtpDetayTarih.TabIndex = 0;
+            dtpDetayTarih.ValueChanged += dtpDetayTarih_ValueChanged;
             // 
             // label4
             // 
@@ -307,11 +301,21 @@
             dgwGidalar.TabIndex = 17;
             dgwGidalar.CellClick += dgwGidalar_CellClick;
             // 
+            // dgwSecilenler
+            // 
+            dgwSecilenler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgwSecilenler.Location = new Point(62, 420);
+            dgwSecilenler.Name = "dgwSecilenler";
+            dgwSecilenler.RowTemplate.Height = 25;
+            dgwSecilenler.Size = new Size(303, 150);
+            dgwSecilenler.TabIndex = 18;
+            // 
             // AnaMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1230, 725);
+            Controls.Add(dgwSecilenler);
             Controls.Add(dgwGidalar);
             Controls.Add(label8);
             Controls.Add(label7);
@@ -319,7 +323,7 @@
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(groupBox1);
-            Controls.Add(label2);
+            Controls.Add(lblToplamKalori);
             Controls.Add(btnRaporlarSayfasi);
             Controls.Add(btnSecilenleriKaydet);
             Controls.Add(btnTemizle);
@@ -327,7 +331,6 @@
             Controls.Add(lblSecilenKalorisi);
             Controls.Add(txtSecilenUrunPorsiyon);
             Controls.Add(txtSecilenUrunAdi);
-            Controls.Add(lstSecilenler);
             Controls.Add(dtpOgunTarihi);
             Controls.Add(cmbOgunSecme);
             Controls.Add(txtAramaMetni);
@@ -338,6 +341,7 @@
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgwDetaylar).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgwGidalar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgwSecilenler).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -351,11 +355,10 @@
         private TextBox txtSecilenUrunPorsiyon;
         private Label lblSecilenKalorisi;
         private Button btnSec;
-        private ListView lstSecilenler;
         private Button btnTemizle;
         private Button btnSecilenleriKaydet;
         private Button btnRaporlarSayfasi;
-        private Label label2;
+        private Label lblToplamKalori;
         private GroupBox groupBox1;
         private Label label3;
         private Button btnGuncelle;
@@ -371,5 +374,6 @@
         private Label label8;
         private DataGridView dgwGidalar;
         private DataGridView dgwDetaylar;
+        private DataGridView dgwSecilenler;
     }
 }

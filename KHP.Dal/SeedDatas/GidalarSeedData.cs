@@ -1,4 +1,5 @@
 ﻿using KHP.Entities;
+using KHP.Entities.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -13,31 +14,31 @@ namespace KHP.Dal.SeedDatas
     {
         public void Configure(EntityTypeBuilder<Gida> builder)
         {
-            //builder.HasData(
-            //                   new Gida
-            //                   {
-            //                       ID = 1,
-            //                       Ad = "Salata",
-            //                       Kalori = 152,
-            //                       GidaTuru = "Yiyecek",
-            //                       OgunID = 1
-            //                   },
-            //               new Gida
-            //               {
-            //                   ID = 2,
-            //                   Ad = "Kek",
-            //                   Kalori = 357,
-            //                   GidaTuru = "Yiyecek",
-            //                   OgunID = 1
-            //               },
-            //               new Gida
-            //               {
-            //                   ID = 3,
-            //                   Ad = "Tost",
-            //                   Kalori = 289,
-            //                   GidaTuru = "Yiyecek",
-            //                   OgunID = 1
-            //               },
+            builder.HasData(
+                               new Gida
+                               {
+                                   ID = 1,
+                                   Ad = "Salata",
+                                   Kalori = 152,
+                                   Porsiyon = 1,
+                                   GidaTuru = GidaTurleri.Icecek,
+                               },
+                           new Gida
+                           {
+                               ID = 2,
+                               Ad = "Kek",
+                               Kalori = 357,
+                               Porsiyon = 1,
+                               GidaTuru = GidaTurleri.Yiyecek,
+                           },
+                           new Gida
+                           {
+                               ID = 3,
+                               Ad = "Tost",
+                               Kalori = 289,
+                               Porsiyon = 1,
+                               GidaTuru = GidaTurleri.Yiyecek,
+                           });
             //               new Gida
             //               {
             //                   ID = 4,
