@@ -29,38 +29,59 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            dgvHerkes = new DataGridView();
+            dgvKisi = new DataGridView();
             label2 = new Label();
             label1 = new Label();
-            listBox1 = new ListBox();
-            listView1 = new ListView();
-            button2 = new Button();
-            button1 = new Button();
-            dateTimePicker2 = new DateTimePicker();
-            dateTimePicker1 = new DateTimePicker();
+            btnKategoriBazliListele = new Button();
+            btnOgunBazliListele = new Button();
+            dtpBitis = new DateTimePicker();
+            dtpBaslangic = new DateTimePicker();
             groupBox2 = new GroupBox();
-            listView2 = new ListView();
-            button4 = new Button();
-            button3 = new Button();
+            dgvFiltreliList = new DataGridView();
+            btnYemeklereGoreListeleAzalan = new Button();
+            btnOgunlereGoreListeleAzalan = new Button();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvHerkes).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvKisi).BeginInit();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvFiltreliList).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(dgvHerkes);
+            groupBox1.Controls.Add(dgvKisi);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(listBox1);
-            groupBox1.Controls.Add(listView1);
-            groupBox1.Controls.Add(button2);
-            groupBox1.Controls.Add(button1);
-            groupBox1.Controls.Add(dateTimePicker2);
-            groupBox1.Controls.Add(dateTimePicker1);
+            groupBox1.Controls.Add(btnKategoriBazliListele);
+            groupBox1.Controls.Add(btnOgunBazliListele);
+            groupBox1.Controls.Add(dtpBitis);
+            groupBox1.Controls.Add(dtpBaslangic);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(523, 462);
+            groupBox1.Size = new Size(523, 584);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
+            groupBox1.Text = "Baz Raporlar";
+            // 
+            // dgvHerkes
+            // 
+            dgvHerkes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvHerkes.Location = new Point(6, 365);
+            dgvHerkes.Name = "dgvHerkes";
+            dgvHerkes.RowTemplate.Height = 25;
+            dgvHerkes.Size = new Size(511, 213);
+            dgvHerkes.TabIndex = 8;
+            // 
+            // dgvKisi
+            // 
+            dgvKisi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvKisi.Location = new Point(6, 155);
+            dgvKisi.Name = "dgvKisi";
+            dgvKisi.RowTemplate.Height = 25;
+            dgvKisi.Size = new Size(511, 150);
+            dgvKisi.TabIndex = 7;
             // 
             // label2
             // 
@@ -80,92 +101,80 @@
             label1.TabIndex = 6;
             label1.Text = "Baslangic Tarihi Seciniz";
             // 
-            // listBox1
+            // btnKategoriBazliListele
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(6, 312);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(511, 94);
-            listBox1.TabIndex = 5;
+            btnKategoriBazliListele.Location = new Point(289, 107);
+            btnKategoriBazliListele.Name = "btnKategoriBazliListele";
+            btnKategoriBazliListele.Size = new Size(129, 42);
+            btnKategoriBazliListele.TabIndex = 3;
+            btnKategoriBazliListele.Text = "Kategori Bazlı Listele";
+            btnKategoriBazliListele.UseVisualStyleBackColor = true;
+            btnKategoriBazliListele.Click += btnKategoriBazliListele_Click;
             // 
-            // listView1
+            // btnOgunBazliListele
             // 
-            listView1.Location = new Point(6, 168);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(511, 97);
-            listView1.TabIndex = 4;
-            listView1.UseCompatibleStateImageBehavior = false;
+            btnOgunBazliListele.Location = new Point(61, 107);
+            btnOgunBazliListele.Name = "btnOgunBazliListele";
+            btnOgunBazliListele.Size = new Size(111, 42);
+            btnOgunBazliListele.TabIndex = 2;
+            btnOgunBazliListele.Text = "Öğün Bazlı Listele";
+            btnOgunBazliListele.UseVisualStyleBackColor = true;
+            btnOgunBazliListele.Click += btnOgunBazliListele_Click;
             // 
-            // button2
+            // dtpBitis
             // 
-            button2.Location = new Point(307, 107);
-            button2.Name = "button2";
-            button2.Size = new Size(111, 42);
-            button2.TabIndex = 3;
-            button2.Text = "Kategori Bazli Listele";
-            button2.UseVisualStyleBackColor = true;
+            dtpBitis.Location = new Point(254, 57);
+            dtpBitis.Name = "dtpBitis";
+            dtpBitis.Size = new Size(200, 23);
+            dtpBitis.TabIndex = 1;
             // 
-            // button1
+            // dtpBaslangic
             // 
-            button1.Location = new Point(61, 107);
-            button1.Name = "button1";
-            button1.Size = new Size(111, 42);
-            button1.TabIndex = 2;
-            button1.Text = "Ogun Bazli Listele";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker2
-            // 
-            dateTimePicker2.Location = new Point(254, 57);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(200, 23);
-            dateTimePicker2.TabIndex = 1;
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Location = new Point(21, 57);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 23);
-            dateTimePicker1.TabIndex = 0;
+            dtpBaslangic.Location = new Point(21, 57);
+            dtpBaslangic.Name = "dtpBaslangic";
+            dtpBaslangic.Size = new Size(200, 23);
+            dtpBaslangic.TabIndex = 0;
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(listView2);
-            groupBox2.Controls.Add(button4);
-            groupBox2.Controls.Add(button3);
+            groupBox2.Controls.Add(dgvFiltreliList);
+            groupBox2.Controls.Add(btnYemeklereGoreListeleAzalan);
+            groupBox2.Controls.Add(btnOgunlereGoreListeleAzalan);
             groupBox2.Location = new Point(582, 12);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(391, 472);
+            groupBox2.Size = new Size(391, 584);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
-            groupBox2.Text = "groupBox2";
+            groupBox2.Text = "Filtreli Raporlar";
             // 
-            // listView2
+            // dgvFiltreliList
             // 
-            listView2.Location = new Point(25, 106);
-            listView2.Name = "listView2";
-            listView2.Size = new Size(316, 333);
-            listView2.TabIndex = 2;
-            listView2.UseCompatibleStateImageBehavior = false;
+            dgvFiltreliList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvFiltreliList.Location = new Point(6, 107);
+            dgvFiltreliList.Name = "dgvFiltreliList";
+            dgvFiltreliList.RowTemplate.Height = 25;
+            dgvFiltreliList.Size = new Size(379, 407);
+            dgvFiltreliList.TabIndex = 2;
             // 
-            // button4
+            // btnYemeklereGoreListeleAzalan
             // 
-            button4.Location = new Point(230, 36);
-            button4.Name = "button4";
-            button4.Size = new Size(111, 42);
-            button4.TabIndex = 1;
-            button4.Text = "Yemeklere Gore Listele Azalan";
-            button4.UseVisualStyleBackColor = true;
+            btnYemeklereGoreListeleAzalan.Location = new Point(230, 36);
+            btnYemeklereGoreListeleAzalan.Name = "btnYemeklereGoreListeleAzalan";
+            btnYemeklereGoreListeleAzalan.Size = new Size(111, 42);
+            btnYemeklereGoreListeleAzalan.TabIndex = 1;
+            btnYemeklereGoreListeleAzalan.Text = "Yemeklere Göre Listele Azalan";
+            btnYemeklereGoreListeleAzalan.UseVisualStyleBackColor = true;
+            btnYemeklereGoreListeleAzalan.Click += btnYemeklereGoreListeleAzalan_Click;
             // 
-            // button3
+            // btnOgunlereGoreListeleAzalan
             // 
-            button3.Location = new Point(25, 36);
-            button3.Name = "button3";
-            button3.Size = new Size(111, 42);
-            button3.TabIndex = 0;
-            button3.Text = "Ogunlere Gore Listele Azalan";
-            button3.UseVisualStyleBackColor = true;
+            btnOgunlereGoreListeleAzalan.Location = new Point(25, 36);
+            btnOgunlereGoreListeleAzalan.Name = "btnOgunlereGoreListeleAzalan";
+            btnOgunlereGoreListeleAzalan.Size = new Size(111, 42);
+            btnOgunlereGoreListeleAzalan.TabIndex = 0;
+            btnOgunlereGoreListeleAzalan.Text = "Öğünlere Göre Listele Azalan";
+            btnOgunlereGoreListeleAzalan.UseVisualStyleBackColor = true;
+            btnOgunlereGoreListeleAzalan.Click += btnOgunlereGoreListeleAzalan_Click;
             // 
             // Raporlar
             // 
@@ -178,24 +187,27 @@
             Text = "Raporlar";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvHerkes).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvKisi).EndInit();
             groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvFiltreliList).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private GroupBox groupBox1;
-        private ListBox listBox1;
-        private ListView listView1;
-        private Button button2;
-        private Button button1;
-        private DateTimePicker dateTimePicker2;
-        private DateTimePicker dateTimePicker1;
+        private Button btnKategoriBazliListele;
+        private Button btnOgunBazliListele;
+        private DateTimePicker dtpBitis;
+        private DateTimePicker dtpBaslangic;
         private GroupBox groupBox2;
-        private ListView listView2;
-        private Button button4;
-        private Button button3;
+        private Button btnYemeklereGoreListeleAzalan;
+        private Button btnOgunlereGoreListeleAzalan;
         private Label label2;
         private Label label1;
+        private DataGridView dgvHerkes;
+        private DataGridView dgvKisi;
+        private DataGridView dgvFiltreliList;
     }
 }

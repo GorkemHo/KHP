@@ -31,5 +31,35 @@ namespace KHP.UI
             secilenGidalar = new List<GidaEklemeVm>();
             _kullaniciGidaService = new KullaniciGidaService();
         }
+
+        private void btnOgunBazliListele_Click(object sender, EventArgs e)
+        {
+            dgvHerkes.DataSource = null;
+            dgvKisi.DataSource = null;
+
+            dgvKisi.DataSource = _kullaniciGidaService.TarihlerArasiKisiOgunListeleme(dtpBaslangic.Value.Date, dtpBitis.Value.Date, _kullaniciId);
+            dgvHerkes.DataSource = _kullaniciGidaService.TarihlerArasıOgunListesi(dtpBaslangic.Value.Date, dtpBitis.Value.Date);
+        }
+
+        private void btnKategoriBazliListele_Click(object sender, EventArgs e)
+        {
+            dgvHerkes.DataSource = null;
+            dgvKisi.DataSource = null;
+
+            dgvKisi.DataSource = _kullaniciGidaService.TarihlerArasiKisiKategoriListeleme(dtpBaslangic.Value.Date, dtpBitis.Value.Date, _kullaniciId);
+            dgvHerkes.DataSource = _kullaniciGidaService.TarihlerArasiKategoriListeleme(dtpBaslangic.Value.Date, dtpBitis.Value.Date);
+        }
+
+        private void btnOgunlereGoreListeleAzalan_Click(object sender, EventArgs e)
+        {
+            dgvFiltreliList.DataSource = null;
+            dgvFiltreliList.DataSource = _kullaniciGidaService.OgunlereGoreAzalan();
+        }
+
+        private void btnYemeklereGoreListeleAzalan_Click(object sender, EventArgs e)
+        {
+            dgvFiltreliList.DataSource = null;
+            dgvFiltreliList.DataSource = _kullaniciGidaService.GidaAdinaGoreAzalan();
+        }
     }
 }

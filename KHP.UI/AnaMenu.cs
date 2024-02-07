@@ -135,7 +135,7 @@ namespace KHP.UI
             {
                 DataGridViewRow selectedRow = dgwDetaylar.Rows[e.RowIndex];
 
-                txtSecilenUrunAdi.Text = selectedRow.Cells["Ad"].Value.ToString();
+                txtSecilenUrunAdi.Text = selectedRow.Cells["GidaAdi"].Value.ToString();
                 txtSecilenUrunPorsiyon.Text = selectedRow.Cells["Porsiyon"].Value.ToString();
                 cmbOgunSecme.SelectedItem = selectedRow.Cells["OgunAdi"].Value.ToString();
                 dtpOgunTarihi.Value = Convert.ToDateTime(selectedRow.Cells["OlusturulmaTarihi"].Value);
@@ -147,27 +147,37 @@ namespace KHP.UI
             decimal carpanKalori = (decimal)dgwDetaylar.CurrentRow.Cells["Porsiyon"].Value;
             var KullaniciGidaUpdate = new KullaniciGidaUpdateVm
             {
-                Id = Convert.ToInt32(dgwDetaylar.CurrentRow.Cells["Id"].Value),
+                Id = Convert.ToInt32(dgwDetaylar.CurrentRow.Cells["ID"].Value),
                 KullaniciId = _kullaniciId,
                 GidaAdi = txtSecilenUrunAdi.Text,
                 GidaTuru = dgwDetaylar.CurrentRow.Cells["GidaTuru"].Value.ToString(),
                 Porsiyon = Convert.ToDecimal(txtSecilenUrunPorsiyon.Text),
                 Kalori = Convert.ToDecimal(txtSecilenUrunPorsiyon.Text) * (decimal)dgwDetaylar.CurrentRow.Cells["Kalori"].Value / carpanKalori,
                 OgunAdi = Convert.ToString(cmbOgunSecme.SelectedItem),
-                OlusturulmaTarihi = dtpOgunTarihi.Value
+                OlusturulmaTarihi = dtpOgunTarihi.Value.Date
             };
             _kullaniciGidaService.Update(KullaniciGidaUpdate);
+            MessageBox.Show("GÜNCELLEME TAMAMLANDI.");
         }
 
         private void btnSil_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(dgwDetaylar.CurrentRow.Cells["Id"].Value);
-            _kullaniciGidaService.Delete(id);
+            try
+            {
+                int id = Convert.ToInt32(dgwDetaylar.CurrentRow.Cells["Id"].Value);
+                _kullaniciGidaService.Delete(id);
+                MessageBox.Show("Silindi.");
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show("SİLİNİRKEN HATA!");
+            }
+            
         }
         private void btnListele_Click(object sender, EventArgs e)
         {
             dgwDetaylar.DataSource = null;
-            dgwDetaylar.DataSource = _kullaniciGidaService.GetAll().Where(x => x.KullaniciId == _kullaniciId && x.OlusturulmaTarihi == dtpDetayTarih.Value).ToList();
+            dgwDetaylar.DataSource = _kullaniciGidaService.GetAll().Where(x => x.KullaniciId == _kullaniciId && x.OlusturulmaTarihi.Date == dtpDetayTarih.Value.Date).ToList();
         }    
 
 
@@ -192,7 +202,7 @@ namespace KHP.UI
         private void dtpDetayTarih_ValueChanged(object sender, EventArgs e)
         {
             dgwDetaylar.DataSource = null;
-            dgwDetaylar.DataSource = _kullaniciGidaService.GetAll().Where(x => x.KullaniciId == _kullaniciId && x.OlusturulmaTarihi == dtpDetayTarih.Value).ToList();
+            dgwDetaylar.DataSource = _kullaniciGidaService.GetAll().Where(x => x.KullaniciId == _kullaniciId && x.OlusturulmaTarihi.Date == dtpDetayTarih.Value.Date).ToList();
             DataGridViewGuncelleDetay();
         }
 

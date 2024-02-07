@@ -47,6 +47,7 @@
             // 
             txtSifre.Location = new Point(113, 129);
             txtSifre.Name = "txtSifre";
+            txtSifre.PasswordChar = '*';
             txtSifre.Size = new Size(156, 23);
             txtSifre.TabIndex = 1;
             // 
