@@ -26,19 +26,24 @@ namespace KHP.Bll.Services
 
         public bool Authanticator(string eposta, string sifre)
         {
-            Kullanici kullanici= GetByUsername(eposta);
-            if (kullanici==null||kullanici.Sifre!=sifre )
+            Kullanici kullanici = GetByUsername(eposta);
+            if (kullanici == null || kullanici.Sifre != sifre)
             {
-                return false;   
+                return false;
             }
             return true;
         }
-        public Kullanici GetByUsername(string username) { return _kullaniciRepo.GetAll().FirstOrDefault(a => a.Eposta == username); }
-        public bool CheckIfPasswordOk(string sifre ,string sifretekrar)
+
+        public Kullanici GetByUsername(string username)
         {
-             
-            return sifre.Length >= 8 && sifre.Count(char.IsUpper) >= 2 && sifre.Count(char.IsLower)>=3 && sifre.Equals(sifretekrar);
-            
+            return _kullaniciRepo.GetAll().FirstOrDefault(a => a.Eposta == username);
+        }
+
+        public bool CheckIfPasswordOk(string sifre, string sifretekrar)
+        {
+
+            return sifre.Length >= 8 && sifre.Count(char.IsUpper) >= 2 && sifre.Count(char.IsLower) >= 3 && sifre.Equals(sifretekrar);
+
         }
 
         public bool CheckIfUserNameExist(string eposta)
@@ -62,36 +67,12 @@ namespace KHP.Bll.Services
 
         public string sha256(string sifre)
         {
-            using (SHA256 sha256 = SHA256Managed.Create()  )
+            using (SHA256 sha256 = SHA256Managed.Create())
             {
                 return string.Concat(sha256.ComputeHash(Encoding.UTF8.GetBytes(sifre)).Select(item => item.ToString("x2")));
-                
+
             }
         }
 
-        //public List<OgunListVm> TarihlerArasiKisiKategoriListeleme(DateTime baslangic, DateTime bitis, int id)
-        //{
-        //    List<OgunListVm> ogunListVms = _ogunRepo.GetAll().Where(x => (x.ID == id) & (x.OlusturulmaTarihi > baslangic) & (x.OlusturulmaTarihi < bitis)).OrderBy(c=> c.Yemekler).Select(z => new OgunListVm
-        //    {
-        //        Ad = z.Ad,
-        //        KullaniciID = z.KullaniciID,
-        //        OlusturulmaTarihi = z.OlusturulmaTarihi,
-                
-
-        //}).ToList();
-        //    return ogunListVms;
-        //}
-
-        //public List<OgunListVm> TarihlerArasiKisiOgunListeleme(DateTime baslangic, DateTime bitis, int id)
-        //{
-        //    List<OgunListVm> ogunListVms = _ogunRepo.GetAll().Where(x => (x.ID == id) & (x.OlusturulmaTarihi > baslangic) & (x.OlusturulmaTarihi < bitis)).OrderBy(c=> c.Ad).Select(z => new OgunListVm
-        //    {
-        //        Ad = z.Ad,
-        //        KullaniciID = z.KullaniciID,
-        //        OlusturulmaTarihi = z.OlusturulmaTarihi
-
-        //    }).ToList();
-        //    return ogunListVms;
-        //}
     }
 }

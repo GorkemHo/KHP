@@ -214,7 +214,6 @@ namespace KHP.UI
 
         private void DetayButonlariniAc()
         {
-            btnEkle.Enabled = true;
             btnListele.Enabled = true;
             btnSil.Enabled = true;
             btnGuncelle.Enabled = true;
@@ -222,7 +221,6 @@ namespace KHP.UI
 
         private void DetayButonlariniKapat()
         {
-            btnEkle.Enabled = false;
             btnListele.Enabled = false;
             btnSil.Enabled = false;
             btnGuncelle.Enabled = false;

@@ -10,6 +10,5 @@ namespace KHP.Bll.IServices
     public interface IGidaService
     {
         List<GidaListVm> GetAll();
-        //public List<GidaListVm> TarihlerArasiKategoriListeleme(DateTime baslangic, DateTime bitis);
     }
 }

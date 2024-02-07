@@ -15,14 +15,10 @@ namespace KHP.Bll.IServices
         int Update(KullaniciGidaUpdateVm vm);
         int Delete(int id);
         List<KullaniciGidaListVm> GetAll();
-
         List<KullaniciGidaListVm> TarihlerArasiKisiOgunListeleme(DateTime baslangic, DateTime bitis, int id);
-
         List<KullaniciGidaListVm> TarihlerArasiKisiKategoriListeleme(DateTime baslangic, DateTime bitis, int id);
-
         List<KullaniciGidaListVm> TarihlerArasıOgunListesi(DateTime baslangic, DateTime bitis);
         List<KullaniciGidaListVm> TarihlerArasiKategoriListeleme(DateTime baslangic, DateTime bitis);
-
         List<KullaniciGidaListVm> TarihtekiOgunuGoster(DateTime tarih, int Id);
     }
 }
