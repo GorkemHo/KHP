@@ -21,7 +21,7 @@ namespace KHP.Dal.SeedDatas
                                    Ad = "Salata",
                                    Kalori = 152,
                                    Porsiyon = 1,
-                                   GidaTuru = GidaTurleri.Icecek,
+                                   GidaTuru = "Yiyecek",
                                },
                            new Gida
                            {
@@ -29,7 +29,7 @@ namespace KHP.Dal.SeedDatas
                                Ad = "Kek",
                                Kalori = 357,
                                Porsiyon = 1,
-                               GidaTuru = GidaTurleri.Yiyecek,
+                               GidaTuru = "Yiyecek",
                            },
                            new Gida
                            {
@@ -37,7 +37,7 @@ namespace KHP.Dal.SeedDatas
                                Ad = "Tost",
                                Kalori = 289,
                                Porsiyon = 1,
-                               GidaTuru = GidaTurleri.Yiyecek,
+                               GidaTuru = "Yiyecek",
                            });
             //               new Gida
             //               {

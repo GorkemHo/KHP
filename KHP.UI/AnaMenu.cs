@@ -20,7 +20,7 @@ namespace KHP.UI
         IKullaniciService _kullaniciService;
         IOgunService _ogunService;
         int _kullaniciId;
-        List<GidaListVm> secilenGidalar;
+        List<GidaEklemeVm> secilenGidalar;
 
 
         public AnaMenu(int kullaniciId)
@@ -30,7 +30,7 @@ namespace KHP.UI
             _kullaniciService = new KullaniciService();
             _ogunService = new OgunService();
             _kullaniciId = kullaniciId;
-            secilenGidalar = new List<GidaListVm>();
+            secilenGidalar = new List<GidaEklemeVm>();
         }
         private void AnaMenu_Load(object sender, EventArgs e)
         {
@@ -67,11 +67,15 @@ namespace KHP.UI
 
         private void btnSec_Click(object sender, EventArgs e)
         {
-            secilenGidalar.Add(new GidaListVm
+            secilenGidalar.Add(new GidaEklemeVm
             {
-                Ad = txtSecilenUrunAdi.Text,
+                
+                GidaAdi = txtSecilenUrunAdi.Text,
                 Porsiyon = Convert.ToDecimal(txtSecilenUrunPorsiyon.Text),
-                Kalori = Convert.ToDecimal(txtSecilenUrunPorsiyon.Text) * (decimal)dgwGidalar.CurrentRow.Cells["Kalori"].Value
+                Kalori = Convert.ToDecimal(txtSecilenUrunPorsiyon.Text) * (decimal)dgwGidalar.CurrentRow.Cells["Kalori"].Value,
+                GidaTuru = (string)dgwGidalar.CurrentRow.Cells["GidaTuru"].Value,
+                OlusturulmaTarihi = dtpOgunTarihi.Value,
+                OgunAdi = cmbOgunSecme.SelectedIndex.ToString()
             });
             txtSecilenUrunAdi.Clear();
             txtSecilenUrunPorsiyon.Clear();

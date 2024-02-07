@@ -34,8 +34,9 @@ namespace KHP.Dal.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("GidaTuru")
-                        .HasColumnType("int");
+                    b.Property<string>("GidaTuru")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Kalori")
                         .HasColumnType("decimal(18,2)");
@@ -51,6 +52,32 @@ namespace KHP.Dal.Migrations
                     b.HasIndex("OgunID");
 
                     b.ToTable("Gidalar");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Ad = "Salata",
+                            GidaTuru = "Yiyecek",
+                            Kalori = 152m,
+                            Porsiyon = 1m
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Ad = "Kek",
+                            GidaTuru = "Yiyecek",
+                            Kalori = 357m,
+                            Porsiyon = 1m
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Ad = "Tost",
+                            GidaTuru = "Yiyecek",
+                            Kalori = 289m,
+                            Porsiyon = 1m
+                        });
                 });
 
             modelBuilder.Entity("KHP.Entities.Kullanici", b =>

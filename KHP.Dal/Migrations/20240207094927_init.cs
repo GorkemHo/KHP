@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace KHP.Dal.Migrations
 {
-    public partial class gorkem : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -58,7 +58,7 @@ namespace KHP.Dal.Migrations
                     Ad = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Kalori = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Porsiyon = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    GidaTuru = table.Column<int>(type: "int", nullable: false),
+                    GidaTuru = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     OgunID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -70,6 +70,21 @@ namespace KHP.Dal.Migrations
                         principalTable: "Ogunler",
                         principalColumn: "ID");
                 });
+
+            migrationBuilder.InsertData(
+                table: "Gidalar",
+                columns: new[] { "ID", "Ad", "GidaTuru", "Kalori", "OgunID", "Porsiyon" },
+                values: new object[] { 1, "Salata", "Yiyecek", 152m, null, 1m });
+
+            migrationBuilder.InsertData(
+                table: "Gidalar",
+                columns: new[] { "ID", "Ad", "GidaTuru", "Kalori", "OgunID", "Porsiyon" },
+                values: new object[] { 2, "Kek", "Yiyecek", 357m, null, 1m });
+
+            migrationBuilder.InsertData(
+                table: "Gidalar",
+                columns: new[] { "ID", "Ad", "GidaTuru", "Kalori", "OgunID", "Porsiyon" },
+                values: new object[] { 3, "Tost", "Yiyecek", 289m, null, 1m });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Gidalar_OgunID",
