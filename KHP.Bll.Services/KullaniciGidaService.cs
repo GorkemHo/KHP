@@ -16,13 +16,10 @@ namespace KHP.Bll.Services
     {
         IKullaniciGidaRepo _kullaniciGidaRepo;
 
-
         public KullaniciGidaService()
         {
             _kullaniciGidaRepo = new KullaniciGidaRepo();
         }
-
-
 
         public int Create(KullaniciGidaCreateVm vm)
         {
@@ -53,6 +50,7 @@ namespace KHP.Bll.Services
         {
             List<KullaniciGidaListVm> kullaniciGidaList = _kullaniciGidaRepo.GetAll().Select(x => new KullaniciGidaListVm
             {
+                Id =x.ID,
                 KullaniciId = x.KullaniciId,
                 GidaAdi = x.GidaAdi,
                 GidaTuru = x.GidaTuru,
@@ -149,7 +147,10 @@ namespace KHP.Bll.Services
                 vm.Porsiyon = kullaniciGidaUpdate.Porsiyon;
                 vm.OgunAdi = kullaniciGidaUpdate.OgunAdi;
                 vm.OlusturulmaTarihi = kullaniciGidaUpdate.OlusturulmaTarihi;
+
+                return _kullaniciGidaRepo.Update(kullaniciGidaUpdate);
             }
+
             return 0;
 
         }
