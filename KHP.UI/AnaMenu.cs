@@ -130,7 +130,7 @@ namespace KHP.UI
         {
             SorguTemizle();
             SorguButonlariniKapat();
-            DetayButonlariniAc();            
+            DetayButonlariniAc();
         }
 
         private void SorguTemizle()
@@ -146,7 +146,7 @@ namespace KHP.UI
             dgwSecilenler.DataSource = null;
         }
 
-        
+
 
         private void txtSecilenUrunPorsiyon_TextChanged(object sender, EventArgs e)
         {
@@ -214,7 +214,7 @@ namespace KHP.UI
 
         private void DetayButonlariniAc()
         {
-            btnEkle.Enabled = true;
+
             btnListele.Enabled = true;
             btnSil.Enabled = true;
             btnGuncelle.Enabled = true;
@@ -222,7 +222,7 @@ namespace KHP.UI
 
         private void DetayButonlariniKapat()
         {
-            btnEkle.Enabled = false;
+
             btnListele.Enabled = false;
             btnSil.Enabled = false;
             btnGuncelle.Enabled = false;
@@ -243,6 +243,11 @@ namespace KHP.UI
             btnSec.Enabled = false;
             btnTemizle.Enabled = false;
             btnSecilenleriKaydet.Enabled = false;
+        }
+
+        private void btnListele_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

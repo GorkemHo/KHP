@@ -225,6 +225,7 @@
             btnListele.TabIndex = 3;
             btnListele.Text = "LISTELE";
             btnListele.UseVisualStyleBackColor = true;
+            btnListele.Click += btnListele_Click;
             // 
             // dtpDetayTarih
             // 

@@ -18,8 +18,8 @@ namespace KHP.Dal.Context
         public DbSet<KullaniciGida> KullaniciGidalar { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-NNPAIJ5; Database=KHP; Uid=sa; Pwd=789;");
-            //optionsBuilder.UseSqlServer(@"Server=DESKTOP-JI3UVS4;Database=KHP;Uid=sa;Pwd=123;");
+           // optionsBuilder.UseSqlServer(@"Server=DESKTOP-NNPAIJ5; Database=KHP; Uid=sa; Pwd=789;");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-JI3UVS4;Database=KHP;Uid=sa;Pwd=123;");
             
             //optionsBuilder.UseSqlServer(@"Server=G™RKEMH; Database=KHPDb; Uid=sa; Pwd=123");
         }
