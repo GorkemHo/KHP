@@ -1,4 +1,5 @@
 ﻿using KHP.Entities;
+using KHP.Entities.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -14,14 +15,7 @@ namespace KHP.Dal.SeedDatas
         public void Configure(EntityTypeBuilder<Gida> builder)
         {
             //builder.HasData(
-            //                   new Gida
-            //                   {
-            //                       ID = 1,
-            //                       Ad = "Salata",
-            //                       Kalori = 152,
-            //                       GidaTuru = "Yiyecek",
-            //                       OgunID = 1
-            //                   },
+                              
             //               new Gida
             //               {
             //                   ID = 2,

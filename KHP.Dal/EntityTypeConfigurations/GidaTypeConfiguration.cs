@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KHP.Dal.EntityTypeConfigurations
 {
-    internal class GidaTypeConfiguration
+    public class GidaTypeConfiguration
     {
     }
 }
