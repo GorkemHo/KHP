@@ -69,29 +69,29 @@ namespace KHP.Bll.Services
             }
         }
 
-        public List<OgunListVm> TarihlerArasiKisiKategoriListeleme(DateTime baslangic, DateTime bitis, int id)
-        {
-            List<OgunListVm> ogunListVms = _ogunRepo.GetAll().Where(x => (x.ID == id) & (x.OlusturulmaTarihi > baslangic) & (x.OlusturulmaTarihi < bitis)).OrderBy(c=> c.Yemekler).Select(z => new OgunListVm
-            {
-                Ad = z.Ad,
-                KullaniciID = z.KullaniciID,
-                OlusturulmaTarihi = z.OlusturulmaTarihi,
+        //public List<OgunListVm> TarihlerArasiKisiKategoriListeleme(DateTime baslangic, DateTime bitis, int id)
+        //{
+        //    List<OgunListVm> ogunListVms = _ogunRepo.GetAll().Where(x => (x.ID == id) & (x.OlusturulmaTarihi > baslangic) & (x.OlusturulmaTarihi < bitis)).OrderBy(c=> c.Yemekler).Select(z => new OgunListVm
+        //    {
+        //        Ad = z.Ad,
+        //        KullaniciID = z.KullaniciID,
+        //        OlusturulmaTarihi = z.OlusturulmaTarihi,
                 
 
-        }).ToList();
-            return ogunListVms;
-        }
+        //}).ToList();
+        //    return ogunListVms;
+        //}
 
-        public List<OgunListVm> TarihlerArasiKisiOgunListeleme(DateTime baslangic, DateTime bitis, int id)
-        {
-            List<OgunListVm> ogunListVms = _ogunRepo.GetAll().Where(x => (x.ID == id) & (x.OlusturulmaTarihi > baslangic) & (x.OlusturulmaTarihi < bitis)).OrderBy(c=> c.Ad).Select(z => new OgunListVm
-            {
-                Ad = z.Ad,
-                KullaniciID = z.KullaniciID,
-                OlusturulmaTarihi = z.OlusturulmaTarihi
+        //public List<OgunListVm> TarihlerArasiKisiOgunListeleme(DateTime baslangic, DateTime bitis, int id)
+        //{
+        //    List<OgunListVm> ogunListVms = _ogunRepo.GetAll().Where(x => (x.ID == id) & (x.OlusturulmaTarihi > baslangic) & (x.OlusturulmaTarihi < bitis)).OrderBy(c=> c.Ad).Select(z => new OgunListVm
+        //    {
+        //        Ad = z.Ad,
+        //        KullaniciID = z.KullaniciID,
+        //        OlusturulmaTarihi = z.OlusturulmaTarihi
 
-            }).ToList();
-            return ogunListVms;
-        }
+        //    }).ToList();
+        //    return ogunListVms;
+        //}
     }
 }

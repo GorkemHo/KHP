@@ -62,30 +62,30 @@ namespace KHP.Bll.Services
             return _ogunRepo.GetById(id);
         }
 
-        public List<OgunListVm> TarihlerArasıOgunListesi(DateTime baslangic, DateTime bitis)
-        {
-            List<OgunListVm> ogunList = _ogunRepo.GetAll().Where(x => x.OlusturulmaTarihi > baslangic && x.OlusturulmaTarihi < bitis).Select(z => new OgunListVm
-            {
-                Ad = z.Ad,
-                OlusturulmaTarihi = z.OlusturulmaTarihi,
-            }).ToList();
-            return ogunList;
-        }
+        //public List<OgunListVm> TarihlerArasıOgunListesi(DateTime baslangic, DateTime bitis)
+        //{
+        //    List<OgunListVm> ogunList = _ogunRepo.GetAll().Where(x => x.OlusturulmaTarihi > baslangic && x.OlusturulmaTarihi < bitis).Select(z => new OgunListVm
+        //    {
+        //        Ad = z.Ad,
+        //        OlusturulmaTarihi = z.OlusturulmaTarihi,
+        //    }).ToList();
+        //    return ogunList;
+        //}
 
-        public List<OgunListVm> TarihtekiOgunuGoster(DateTime tarih, int Id)
-        {
-            List<OgunListVm> ogunList = _ogunRepo.GetAll().Where(x => x.OlusturulmaTarihi == tarih && x.KullaniciID == Id).Select(z => new OgunListVm
-            {
+        //public List<OgunListVm> TarihtekiOgunuGoster(DateTime tarih, int Id)
+        //{
+        //    List<OgunListVm> ogunList = _ogunRepo.GetAll().Where(x => x.OlusturulmaTarihi == tarih && x.KullaniciID == Id).Select(z => new OgunListVm
+        //    {
 
-                //Ad = z.Ad,
-                // OlusturulmaTarihi = z.OlusturulmaTarihi,
-                Yemekler = z.Yemekler
+        //        //Ad = z.Ad,
+        //        // OlusturulmaTarihi = z.OlusturulmaTarihi,
+        //        Yemekler = z.Yemekler
 
 
 
-            }).ToList();
-            return ogunList;
-        }
+        //    }).ToList();
+        //    return ogunList;
+        //}
 
 
         public int Update(OgunUpdateVm vm)

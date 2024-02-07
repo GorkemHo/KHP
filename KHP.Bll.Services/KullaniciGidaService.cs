@@ -3,6 +3,7 @@ using KHP.Dal.IRepo;
 using KHP.Dal.Repo;
 using KHP.Entities;
 using KHP.ViewModels;
+using KHP.ViewModels.KullaniciGidaVms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace KHP.Bll.Services
         {
             var kullaniciGida = new KullaniciGida
             {
-                KullaniciId=vm.KullaniciId,
+                KullaniciId = vm.KullaniciId,
                 GidaAdi = vm.GidaAdi,
                 GidaTuru = vm.GidaTuru,
                 Kalori = vm.Kalori,
@@ -61,6 +62,80 @@ namespace KHP.Bll.Services
                 OlusturulmaTarihi = x.OlusturulmaTarihi
             }).ToList();
             return kullaniciGidaList;
+        }
+
+        public List<KullaniciGidaListVm> TarihlerArasiKategoriListeleme(DateTime baslangic, DateTime bitis)
+        {
+            List<KullaniciGidaListVm> _vms = _kullaniciGidaRepo.GetAll().Where(gida => gida.OlusturulmaTarihi >= baslangic && gida.OlusturulmaTarihi <= bitis).Select(gida => new KullaniciGidaListVm
+            {
+                OgunAdi = gida.OgunAdi,
+                OlusturulmaTarihi = gida.OlusturulmaTarihi,
+                GidaAdi = gida.GidaAdi,
+                GidaTuru = gida.GidaTuru,
+                Porsiyon = gida.Porsiyon,
+                Kalori = gida.Kalori
+
+            }).ToList();
+            return _vms;
+        }
+
+        public List<KullaniciGidaListVm> TarihlerArasiKisiKategoriListeleme(DateTime baslangic, DateTime bitis, int id)
+        {
+            List<KullaniciGidaListVm> _vms = _kullaniciGidaRepo.GetAll().Where(x => (x.ID == id) & (x.OlusturulmaTarihi > baslangic) & (x.OlusturulmaTarihi < bitis)).OrderBy(c => c.GidaTuru).Select(z => new KullaniciGidaListVm
+            {
+                OgunAdi = z.OgunAdi,
+                OlusturulmaTarihi = z.OlusturulmaTarihi,
+                GidaAdi = z.GidaAdi,
+                GidaTuru = z.GidaTuru,
+                Porsiyon = z.Porsiyon,
+                Kalori = z.Kalori
+
+
+            }).ToList();
+            return _vms;
+        }
+
+        public List<KullaniciGidaListVm> TarihlerArasiKisiOgunListeleme(DateTime baslangic, DateTime bitis, int id)
+        {
+            List<KullaniciGidaListVm> _vms = _kullaniciGidaRepo.GetAll().Where(x => (x.ID == id) & (x.OlusturulmaTarihi > baslangic) & (x.OlusturulmaTarihi < bitis)).OrderBy(c => c.OgunAdi).Select(z => new KullaniciGidaListVm
+            {
+                OgunAdi = z.OgunAdi,
+                OlusturulmaTarihi = z.OlusturulmaTarihi,
+                GidaAdi = z.GidaAdi,
+                GidaTuru = z.GidaTuru,
+                Porsiyon = z.Porsiyon,
+                Kalori = z.Kalori
+
+            }).ToList();
+            return _vms;
+        }
+
+        public List<KullaniciGidaListVm> TarihlerArasıOgunListesi(DateTime baslangic, DateTime bitis)
+        {
+            List<KullaniciGidaListVm> _vms = _kullaniciGidaRepo.GetAll().Where(x => x.OlusturulmaTarihi > baslangic && x.OlusturulmaTarihi < bitis).Select(z => new KullaniciGidaListVm
+            {
+                OgunAdi = z.OgunAdi,
+                OlusturulmaTarihi = z.OlusturulmaTarihi,
+                GidaAdi = z.GidaAdi,
+                GidaTuru = z.GidaTuru,
+                Porsiyon = z.Porsiyon,
+                Kalori = z.Kalori
+            }).ToList();
+            return _vms;
+        }
+
+        public List<KullaniciGidaListVm> TarihtekiOgunuGoster(DateTime tarih, int Id)
+        {
+            List<KullaniciGidaListVm> _vms = _kullaniciGidaRepo.GetAll().Where(x => x.OlusturulmaTarihi == tarih && x.KullaniciId == Id).Select(z => new KullaniciGidaListVm
+            {
+                OgunAdi = z.OgunAdi,
+                OlusturulmaTarihi = z.OlusturulmaTarihi,
+                GidaAdi = z.GidaAdi,
+                GidaTuru = z.GidaTuru,
+                Porsiyon = z.Porsiyon,
+                Kalori = z.Kalori
+            }).ToList();
+            return _vms;
         }
 
         public int Update(KullaniciGidaUpdateVm vm)

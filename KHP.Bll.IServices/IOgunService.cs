@@ -17,8 +17,8 @@ namespace KHP.Bll.IServices
         Ogun GetById(int id);
         List<OgunListVm> GetAll();
 
-        List<OgunListVm> TarihlerArasıOgunListesi (DateTime baslangic, DateTime bitis);
-        List<OgunListVm> TarihtekiOgunuGoster (DateTime tarih, int Id);
+        //List<OgunListVm> TarihlerArasıOgunListesi (DateTime baslangic, DateTime bitis);
+        //List<OgunListVm> TarihtekiOgunuGoster (DateTime tarih, int Id);
 
     }
 }

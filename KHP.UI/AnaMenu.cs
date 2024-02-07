@@ -2,6 +2,7 @@
 using KHP.Bll.Services;
 using KHP.Entities;
 using KHP.ViewModels;
+using KHP.ViewModels.KullaniciGidaVms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -77,7 +78,7 @@ namespace KHP.UI
                 Kalori = Convert.ToDecimal(txtSecilenUrunPorsiyon.Text) * (decimal)dgwGidalar.CurrentRow.Cells["Kalori"].Value,
                 GidaTuru = (string)dgwGidalar.CurrentRow.Cells["GidaTuru"].Value,
                 OlusturulmaTarihi = dtpOgunTarihi.Value,
-                OgunAdi = cmbOgunSecme.SelectedIndex.ToString()
+                OgunAdi = cmbOgunSecme.SelectedItem.ToString()
             });
             txtSecilenUrunAdi.Clear();
             txtSecilenUrunPorsiyon.Clear();

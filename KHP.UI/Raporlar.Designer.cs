@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            groupBox2 = new GroupBox();
-            dateTimePicker1 = new DateTimePicker();
-            dateTimePicker2 = new DateTimePicker();
-            button1 = new Button();
-            button2 = new Button();
-            listView1 = new ListView();
-            listBox1 = new ListBox();
-            button3 = new Button();
-            button4 = new Button();
-            listView2 = new ListView();
-            label1 = new Label();
             label2 = new Label();
+            label1 = new Label();
+            listBox1 = new ListBox();
+            listView1 = new ListView();
+            button2 = new Button();
+            button1 = new Button();
+            dateTimePicker2 = new DateTimePicker();
+            dateTimePicker1 = new DateTimePicker();
+            groupBox2 = new GroupBox();
+            listView2 = new ListView();
+            button4 = new Button();
+            button3 = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -62,92 +62,14 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
             // 
-            // groupBox2
+            // label2
             // 
-            groupBox2.Controls.Add(listView2);
-            groupBox2.Controls.Add(button4);
-            groupBox2.Controls.Add(button3);
-            groupBox2.Location = new Point(582, 64);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(391, 472);
-            groupBox2.TabIndex = 1;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "groupBox2";
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Location = new Point(21, 57);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 23);
-            dateTimePicker1.TabIndex = 0;
-            // 
-            // dateTimePicker2
-            // 
-            dateTimePicker2.Location = new Point(254, 57);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(200, 23);
-            dateTimePicker2.TabIndex = 1;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(61, 107);
-            button1.Name = "button1";
-            button1.Size = new Size(111, 42);
-            button1.TabIndex = 2;
-            button1.Text = "Ogun Bazli Listele";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(307, 107);
-            button2.Name = "button2";
-            button2.Size = new Size(111, 42);
-            button2.TabIndex = 3;
-            button2.Text = "Kategori Bazli Listele";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // listView1
-            // 
-            listView1.Location = new Point(63, 168);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(357, 97);
-            listView1.TabIndex = 4;
-            listView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // listBox1
-            // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(61, 312);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(357, 94);
-            listBox1.TabIndex = 5;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(25, 36);
-            button3.Name = "button3";
-            button3.Size = new Size(111, 42);
-            button3.TabIndex = 0;
-            button3.Text = "Ogunlere Gore Listele Azalan";
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            button4.Location = new Point(230, 36);
-            button4.Name = "button4";
-            button4.Size = new Size(111, 42);
-            button4.TabIndex = 1;
-            button4.Text = "Yemeklere Gore Listele Azalan";
-            button4.UseVisualStyleBackColor = true;
-            // 
-            // listView2
-            // 
-            listView2.Location = new Point(25, 106);
-            listView2.Name = "listView2";
-            listView2.Size = new Size(316, 333);
-            listView2.TabIndex = 2;
-            listView2.UseCompatibleStateImageBehavior = false;
+            label2.AutoSize = true;
+            label2.Location = new Point(254, 39);
+            label2.Name = "label2";
+            label2.Size = new Size(99, 15);
+            label2.TabIndex = 6;
+            label2.Text = "Bitis Tarihi Seciniz";
             // 
             // label1
             // 
@@ -158,14 +80,92 @@
             label1.TabIndex = 6;
             label1.Text = "Baslangic Tarihi Seciniz";
             // 
-            // label2
+            // listBox1
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(254, 39);
-            label2.Name = "label2";
-            label2.Size = new Size(99, 15);
-            label2.TabIndex = 6;
-            label2.Text = "Bitis Tarihi Seciniz";
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Location = new Point(6, 312);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(511, 94);
+            listBox1.TabIndex = 5;
+            // 
+            // listView1
+            // 
+            listView1.Location = new Point(6, 168);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(511, 97);
+            listView1.TabIndex = 4;
+            listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(307, 107);
+            button2.Name = "button2";
+            button2.Size = new Size(111, 42);
+            button2.TabIndex = 3;
+            button2.Text = "Kategori Bazli Listele";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(61, 107);
+            button1.Name = "button1";
+            button1.Size = new Size(111, 42);
+            button1.TabIndex = 2;
+            button1.Text = "Ogun Bazli Listele";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker2
+            // 
+            dateTimePicker2.Location = new Point(254, 57);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(200, 23);
+            dateTimePicker2.TabIndex = 1;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(21, 57);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(200, 23);
+            dateTimePicker1.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(listView2);
+            groupBox2.Controls.Add(button4);
+            groupBox2.Controls.Add(button3);
+            groupBox2.Location = new Point(582, 12);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(391, 472);
+            groupBox2.TabIndex = 1;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "groupBox2";
+            // 
+            // listView2
+            // 
+            listView2.Location = new Point(25, 106);
+            listView2.Name = "listView2";
+            listView2.Size = new Size(316, 333);
+            listView2.TabIndex = 2;
+            listView2.UseCompatibleStateImageBehavior = false;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(230, 36);
+            button4.Name = "button4";
+            button4.Size = new Size(111, 42);
+            button4.TabIndex = 1;
+            button4.Text = "Yemeklere Gore Listele Azalan";
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(25, 36);
+            button3.Name = "button3";
+            button3.Size = new Size(111, 42);
+            button3.TabIndex = 0;
+            button3.Text = "Ogunlere Gore Listele Azalan";
+            button3.UseVisualStyleBackColor = true;
             // 
             // Raporlar
             // 

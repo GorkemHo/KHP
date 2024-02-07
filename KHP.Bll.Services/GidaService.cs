@@ -35,16 +35,16 @@ namespace KHP.Bll.Services
             return _vm;
         }
 
-        public List<GidaListVm> TarihlerArasiKategoriListeleme(DateTime baslangic, DateTime bitis)
-        {
-            List<GidaListVm> _vms = _gidaRepo.GetAll().Where(gida => gida.Ogun.OlusturulmaTarihi >= baslangic && gida.Ogun.OlusturulmaTarihi <= bitis).Select(gida => new GidaListVm
-            {
-                Ad = gida.Ad,
-                Kalori = gida.Kalori,
-                Porsiyon = gida.Porsiyon,
-                GidaTuru= gida.GidaTuru
-            }).ToList();
-            return _vms;
-        }
+        //public List<GidaListVm> TarihlerArasiKategoriListeleme(DateTime baslangic, DateTime bitis)
+        //{
+        //    List<GidaListVm> _vms = _gidaRepo.GetAll().Where(gida => gida.Ogun.OlusturulmaTarihi >= baslangic && gida.Ogun.OlusturulmaTarihi <= bitis).Select(gida => new GidaListVm
+        //    {
+        //        Ad = gida.Ad,
+        //        Kalori = gida.Kalori,
+        //        Porsiyon = gida.Porsiyon,
+        //        GidaTuru= gida.GidaTuru
+        //    }).ToList();
+        //    return _vms;
+        //}
     }
 }

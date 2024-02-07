@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KHP.ViewModels
+namespace KHP.ViewModels.KullaniciGidaVms
 {
     public class KullaniciGidaListVm
     {
