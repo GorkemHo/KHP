@@ -57,6 +57,7 @@ namespace KHP.UI
         private void dgwGidalar_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             SorguButonlariniAc();
+            DetayButonlariniKapat();
 
             if (e.RowIndex >= 0)
             {
@@ -69,22 +70,40 @@ namespace KHP.UI
 
         private void btnSec_Click(object sender, EventArgs e)
         {
-            secilenGidalar.Add(new GidaEklemeVm
+            try
             {
-                Id = _kullaniciId,
-                GidaAdi = txtSecilenUrunAdi.Text,
-                Porsiyon = Convert.ToDecimal(txtSecilenUrunPorsiyon.Text),
-                Kalori = Convert.ToDecimal(txtSecilenUrunPorsiyon.Text) * (decimal)dgwGidalar.CurrentRow.Cells["Kalori"].Value,
-                GidaTuru = (string)dgwGidalar.CurrentRow.Cells["GidaTuru"].Value,
-                OlusturulmaTarihi = dtpOgunTarihi.Value,
-                OgunAdi = cmbOgunSecme.SelectedItem.ToString()
-            });
-            txtSecilenUrunAdi.Clear();
-            txtSecilenUrunPorsiyon.Clear();
-            dgwGidalar.DataSource = null;
-            dgwGidalar.DataSource = _gidaService.GetAll();
-            dgwSecilenler.DataSource = null;
-            dgwSecilenler.DataSource = secilenGidalar;
+                if (decimal.TryParse(txtSecilenUrunPorsiyon.Text, out decimal porsiyon) && porsiyon > 0)
+                {
+                    secilenGidalar.Add(new GidaEklemeVm
+                    {
+                        Id = _kullaniciId,
+                        GidaAdi = txtSecilenUrunAdi.Text,
+                        Porsiyon = Convert.ToDecimal(txtSecilenUrunPorsiyon.Text),
+                        Kalori = Convert.ToDecimal(txtSecilenUrunPorsiyon.Text) * (decimal)dgwGidalar.CurrentRow.Cells["Kalori"].Value,
+                        GidaTuru = (string)dgwGidalar.CurrentRow.Cells["GidaTuru"].Value,
+                        OlusturulmaTarihi = dtpOgunTarihi.Value,
+                        OgunAdi = cmbOgunSecme.SelectedItem.ToString()
+                    });
+                    txtSecilenUrunAdi.Clear();
+                    txtSecilenUrunPorsiyon.Clear();
+                    dgwGidalar.DataSource = null;
+                    dgwGidalar.DataSource = _gidaService.GetAll();
+                    dgwSecilenler.DataSource = null;
+                    dgwSecilenler.DataSource = secilenGidalar;
+                    btnSecilenleriKaydet.Enabled = true;
+                    DataGridViewGuncelleSecilenler();
+                }
+                else
+                {
+                    MessageBox.Show("Geçersiz porsiyon değeri. Lütfen pozitif bir rakam giriniz.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Secme islemi sirasinda bir hata meydana geldi!");
+            }
+            
+            
         }
 
 
@@ -109,6 +128,7 @@ namespace KHP.UI
                 }
                 MessageBox.Show("Kayit islemi basarili!");
                 SorguTemizle();
+                SorguButonlariniKapat();
             }
         }
 
@@ -129,53 +149,98 @@ namespace KHP.UI
             SorguButonlariniKapat();
             DetayButonlariniAc();
 
-            if (e.RowIndex >= 0)
+            try
             {
-                DataGridViewRow selectedRow = dgwDetaylar.Rows[e.RowIndex];
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow selectedRow = dgwDetaylar.Rows[e.RowIndex];
 
-                txtSecilenUrunAdi.Text = selectedRow.Cells["GidaAdi"].Value.ToString();
-                txtSecilenUrunPorsiyon.Text = selectedRow.Cells["Porsiyon"].Value.ToString();
-                cmbOgunSecme.SelectedItem = selectedRow.Cells["OgunAdi"].Value.ToString();
-                dtpOgunTarihi.Value = Convert.ToDateTime(selectedRow.Cells["OlusturulmaTarihi"].Value);
+                    txtSecilenUrunAdi.Text = selectedRow.Cells["GidaAdi"].Value.ToString();
+                    txtSecilenUrunPorsiyon.Text = selectedRow.Cells["Porsiyon"].Value.ToString();
+                    cmbOgunSecme.SelectedItem = selectedRow.Cells["OgunAdi"].Value.ToString();
+                    dtpOgunTarihi.Value = Convert.ToDateTime(selectedRow.Cells["OlusturulmaTarihi"].Value);
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hucre secme sirasinda bir hata meydana geldi!");
+            }            
         }
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
-            decimal carpanKalori = (decimal)dgwDetaylar.CurrentRow.Cells["Porsiyon"].Value;
-            var KullaniciGidaUpdate = new KullaniciGidaUpdateVm
+            try
             {
-                Id = Convert.ToInt32(dgwDetaylar.CurrentRow.Cells["ID"].Value),
-                KullaniciId = _kullaniciId,
-                GidaAdi = txtSecilenUrunAdi.Text,
-                GidaTuru = dgwDetaylar.CurrentRow.Cells["GidaTuru"].Value.ToString(),
-                Porsiyon = Convert.ToDecimal(txtSecilenUrunPorsiyon.Text),
-                Kalori = Convert.ToDecimal(txtSecilenUrunPorsiyon.Text) * (decimal)dgwDetaylar.CurrentRow.Cells["Kalori"].Value / carpanKalori,
-                OgunAdi = Convert.ToString(cmbOgunSecme.SelectedItem),
-                OlusturulmaTarihi = dtpOgunTarihi.Value.Date
-            };
-            _kullaniciGidaService.Update(KullaniciGidaUpdate);
-            MessageBox.Show("GÜNCELLEME TAMAMLANDI.");
+                if (dgwDetaylar.CurrentRow != null)
+                {
+                    if (decimal.TryParse(txtSecilenUrunPorsiyon.Text, out decimal porsiyon) && porsiyon > 0)
+                    {
+                        decimal carpanKalori = (decimal)dgwDetaylar.CurrentRow.Cells["Porsiyon"].Value;
+                        var KullaniciGidaUpdate = new KullaniciGidaUpdateVm
+                        {
+                            Id = Convert.ToInt32(dgwDetaylar.CurrentRow.Cells["ID"].Value),
+                            KullaniciId = _kullaniciId,
+                            GidaAdi = txtSecilenUrunAdi.Text,
+                            GidaTuru = dgwDetaylar.CurrentRow.Cells["GidaTuru"].Value.ToString(),
+                            Porsiyon = Convert.ToDecimal(txtSecilenUrunPorsiyon.Text),
+                            Kalori = Convert.ToDecimal(txtSecilenUrunPorsiyon.Text) * (decimal)dgwDetaylar.CurrentRow.Cells["Kalori"].Value / carpanKalori,
+                            OgunAdi = Convert.ToString(cmbOgunSecme.SelectedItem),
+                            OlusturulmaTarihi = dtpOgunTarihi.Value.Date
+                        };
+                        _kullaniciGidaService.Update(KullaniciGidaUpdate);
+                        MessageBox.Show("GÜNCELLEME TAMAMLANDI.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Geçersiz porsiyon değeri. Lütfen pozitif bir rakam giriniz.");
+                    }
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Gunceleme islemi icin detaylar tablosundan bir satir seciniz");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("GUNCELLENIRKEN HATA!");
+            }
         }
 
         private void btnSil_Click(object sender, EventArgs e)
         {
             try
             {
-                int id = Convert.ToInt32(dgwDetaylar.CurrentRow.Cells["Id"].Value);
-                _kullaniciGidaService.Delete(id);
-                MessageBox.Show("Silindi.");
+                if (dgwDetaylar.CurrentRow != null)
+                {
+                    int id = Convert.ToInt32(dgwDetaylar.CurrentRow.Cells["Id"].Value);
+                    _kullaniciGidaService.Delete(id);
+                    MessageBox.Show("Silindi.");
+                }
+                else
+                {
+                    MessageBox.Show("Silme islemi icin detaylar tablosundan bir satir seciniz");
+                }
+                
             }
             catch (Exception ex) 
             {
                 MessageBox.Show("SİLİNİRKEN HATA!");
             }
-            
         }
+
         private void btnListele_Click(object sender, EventArgs e)
         {
-            dgwDetaylar.DataSource = null;
-            dgwDetaylar.DataSource = _kullaniciGidaService.GetAll().Where(x => x.KullaniciId == _kullaniciId && x.OlusturulmaTarihi.Date == dtpDetayTarih.Value.Date).ToList();
+            try
+            {
+                dgwDetaylar.DataSource = null;
+                dgwDetaylar.DataSource = _kullaniciGidaService.GetAll().Where(x => x.KullaniciId == _kullaniciId && x.OlusturulmaTarihi.Date == dtpDetayTarih.Value.Date).ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Listeleme islemi sirasinda hata olustu!");
+            }
+            
         }    
 
 
@@ -221,6 +286,8 @@ namespace KHP.UI
             dgwGidalar.DataSource = _gidaService.GetAll();
             lblSecilenKalorisi.Text = "";
             dgwSecilenler.DataSource = null;
+            btnSecilenleriKaydet.Enabled = false;
+            DataGridViewGuncelleSecilenler();
         }
 
         private decimal ToplamKaloriHesaplaSecilenGunIcin()
@@ -247,7 +314,7 @@ namespace KHP.UI
         {
             decimal toplamKalori = 0;
 
-            foreach (DataGridViewRow row in dgwGidalar.Rows)
+            foreach (DataGridViewRow row in dgwSecilenler.Rows)
             {
                 if (row.Cells["Kalori"].Value != null && decimal.TryParse(row.Cells["Kalori"].Value.ToString(), out decimal kalori))
                 {
@@ -277,7 +344,6 @@ namespace KHP.UI
             txtAramaMetni.Enabled = true;
             btnSec.Enabled = true;
             btnTemizle.Enabled = true;
-            btnSecilenleriKaydet.Enabled = true;
         }
 
         private void SorguButonlariniKapat()

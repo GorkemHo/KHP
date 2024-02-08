@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KHP.Dal.Migrations
 {
     [DbContext(typeof(KHPDbContext))]
-    [Migration("20240207191652_init")]
+    [Migration("20240208075512_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
