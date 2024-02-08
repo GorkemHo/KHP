@@ -38,14 +38,14 @@
             // 
             // txtEposta
             // 
-            txtEposta.Location = new Point(113, 72);
+            txtEposta.Location = new Point(111, 72);
             txtEposta.Name = "txtEposta";
             txtEposta.Size = new Size(156, 23);
             txtEposta.TabIndex = 0;
             // 
             // txtSifre
             // 
-            txtSifre.Location = new Point(113, 129);
+            txtSifre.Location = new Point(111, 129);
             txtSifre.Name = "txtSifre";
             txtSifre.PasswordChar = '*';
             txtSifre.Size = new Size(156, 23);
@@ -54,7 +54,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(52, 80);
+            label1.Location = new Point(43, 75);
             label1.Name = "label1";
             label1.Size = new Size(47, 15);
             label1.TabIndex = 2;
@@ -63,7 +63,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(52, 137);
+            label2.Location = new Point(60, 132);
             label2.Name = "label2";
             label2.Size = new Size(30, 15);
             label2.TabIndex = 3;
@@ -72,7 +72,7 @@
             // lblKayıtOl
             // 
             lblKayıtOl.AutoSize = true;
-            lblKayıtOl.Location = new Point(157, 228);
+            lblKayıtOl.Location = new Point(162, 228);
             lblKayıtOl.Name = "lblKayıtOl";
             lblKayıtOl.Size = new Size(55, 15);
             lblKayıtOl.TabIndex = 4;
@@ -82,18 +82,20 @@
             // 
             // btnGirisYap
             // 
+            btnGirisYap.BackColor = SystemColors.ButtonFace;
             btnGirisYap.Location = new Point(126, 176);
             btnGirisYap.Name = "btnGirisYap";
             btnGirisYap.Size = new Size(127, 32);
             btnGirisYap.TabIndex = 5;
-            btnGirisYap.Text = "Giris Yap";
-            btnGirisYap.UseVisualStyleBackColor = true;
+            btnGirisYap.Text = "GİRİŞ YAP";
+            btnGirisYap.UseVisualStyleBackColor = false;
             btnGirisYap.Click += btnGirisYap_Click;
             // 
             // GirisEkrani
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.PaleTurquoise;
             ClientSize = new Size(338, 336);
             Controls.Add(btnGirisYap);
             Controls.Add(lblKayıtOl);
@@ -102,7 +104,7 @@
             Controls.Add(txtSifre);
             Controls.Add(txtEposta);
             Name = "GirisEkrani";
-            Text = "Form1";
+            Text = "Kayıt Ol";
             ResumeLayout(false);
             PerformLayout();
         }

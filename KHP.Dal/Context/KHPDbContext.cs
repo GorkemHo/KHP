@@ -14,7 +14,7 @@ namespace KHP.Dal.Context
     {
         public DbSet<Kullanici> Kullanicilar { get; set; }
         public DbSet<Gida> Gidalar { get; set; }
-        public DbSet<Ogun> Ogunler { get; set; }
+
         public DbSet<KullaniciGida> KullaniciGidalar { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -28,9 +28,7 @@ namespace KHP.Dal.Context
         {
             modelBuilder.ApplyConfiguration(new GidaTypeConfiguration());
             modelBuilder.ApplyConfiguration(new KullaniciTypeConfiguration());
-            modelBuilder.ApplyConfiguration(new OgunTypeConfiguration());
             
-
             modelBuilder.ApplyConfiguration(new GidalarSeedData());
 
             base.OnModelCreating(modelBuilder);

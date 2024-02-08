@@ -17,11 +17,9 @@ namespace KHP.Bll.Services
     public class KullaniciService : IKullaniciService
     {
         KullaniciRepo _kullaniciRepo;
-        OgunRepo _ogunRepo;
         public KullaniciService()
         {
             _kullaniciRepo = new KullaniciRepo();
-            _ogunRepo = new OgunRepo();
         }
 
         public bool Authanticator(string eposta, string sifre)
@@ -41,9 +39,10 @@ namespace KHP.Bll.Services
 
         public bool CheckIfPasswordOk(string sifre, string sifretekrar)
         {
-
-            return sifre.Length >= 8 && sifre.Count(char.IsUpper) >= 2 && sifre.Count(char.IsLower) >= 3 && sifre.Equals(sifretekrar);
-
+            return sifre.Length >= 8 
+                && sifre.Count(char.IsUpper) >= 2 
+                && sifre.Count(char.IsLower) >= 3 
+                && sifre.Equals(sifretekrar);
         }
 
         public bool CheckIfUserNameExist(string eposta)
@@ -51,16 +50,16 @@ namespace KHP.Bll.Services
             return _kullaniciRepo.GetAll().Any(a => a.Eposta == eposta);
         }
 
-        public int Create(KullaniciCreateVm createVm)
+        public int Create(KullaniciCreateVm vm)
         {
             Kullanici kullanici = new Kullanici()
             {
-                Ad = createVm.Ad,
-                Soyad = createVm.Soyad,
-                Eposta = createVm.Eposta,
-                Sifre = createVm.Sifre,
-                Cinsiyet = createVm.Cinsiyet,
-                DogumTarihi = createVm.DogumTarihi,
+                Ad = vm.Ad,
+                Soyad = vm.Soyad,
+                Eposta = vm.Eposta,
+                Sifre = vm.Sifre,
+                Cinsiyet = vm.Cinsiyet,
+                DogumTarihi = vm.DogumTarihi,
             };
             return _kullaniciRepo.Create(kullanici);
         }

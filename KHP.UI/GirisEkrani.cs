@@ -21,22 +21,41 @@ namespace KHP.UI
 
         private void btnGirisYap_Click(object sender, EventArgs e)
         {
-            string kullaniciAdi = txtEposta.Text;
-            string sifre=_service.sha256(txtSifre.Text);
-            bool sonuc=_service.Authanticator(kullaniciAdi, sifre);
-            Kullanici kullanici = _service.GetByUsername(kullaniciAdi);
-            
-            if(sonuc)
+            if (TextBoxlarBosMu(txtEposta, txtSifre))
             {
-                AnaMenu ana= new AnaMenu(kullanici.ID);
-                ana.Show();
-                MessageBox.Show("Giris Basarýlý");
+                string kullaniciAdi = txtEposta.Text;
+                string sifre = _service.sha256(txtSifre.Text);
+                bool sonuc = _service.Authanticator(kullaniciAdi, sifre);
+                Kullanici kullanici = _service.GetByUsername(kullaniciAdi);
+
+                if (sonuc)
+                {
+                    AnaMenu ana = new AnaMenu(kullanici.ID);
+                    ana.Show();
+                    MessageBox.Show("Giriþ Baþarýlý");
+                }
+
+                else
+                {
+                    MessageBox.Show("Kullanýcý adý veya þifre hatalý!");
+                }
             }
-            
             else
             {
-                MessageBox.Show("Kullanýcý Adý veya Sifre Hatalý!");
+                MessageBox.Show("Lütfen boþ alan býrakmayýnýz.");
             }
+            
+        }
+        private bool TextBoxlarBosMu(params TextBox[] textBoxlar)
+        {
+            foreach (TextBox textBox in textBoxlar)
+            {
+                if (string.IsNullOrWhiteSpace(textBox.Text))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
