@@ -103,6 +103,7 @@
             // 
             // lblSecilenKalorisi
             // 
+            lblSecilenKalorisi.BackColor = SystemColors.Control;
             lblSecilenKalorisi.BorderStyle = BorderStyle.FixedSingle;
             lblSecilenKalorisi.Location = new Point(206, 343);
             lblSecilenKalorisi.Name = "lblSecilenKalorisi";
