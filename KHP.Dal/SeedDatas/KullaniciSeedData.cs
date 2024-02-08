@@ -24,9 +24,9 @@ namespace KHP.Dal.SeedDatas
                 new Kullanici
                 {
                     ID = 1,
-                    Ad = "Kemal",
-                    Soyad = "Kılıç",
-                    Eposta = "kk@gmail.com",
+                    Ad = "Görkem",
+                    Soyad = "Hoşca",
+                    Eposta = "gorkemhosca@gmail.",
                     Sifre = _service.sha256("12345678"),
                     Cinsiyet = true,
                     DogumTarihi = new DateTime(1995, 1, 1)
