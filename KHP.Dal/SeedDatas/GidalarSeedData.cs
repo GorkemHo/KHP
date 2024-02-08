@@ -20,7 +20,7 @@ namespace KHP.Dal.SeedDatas
                                    Ad = "Salata",
                                    Kalori = 152,
                                    Porsiyon = 1,
-                                   GidaTuru = "Yiyecek",
+                                   GidaTuru = "Yiyecek",                                   
                                },
                            new Gida
                            {
