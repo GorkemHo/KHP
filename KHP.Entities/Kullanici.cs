@@ -15,6 +15,6 @@ namespace KHP.Entities
         public bool Cinsiyet { get; set; }
         public DateTime DogumTarihi { get; set; }
         public string Sifre { get; set; }
-        
+       
     }
 }

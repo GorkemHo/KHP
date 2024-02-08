@@ -13,7 +13,6 @@ namespace KHP.Dal.EntityTypeConfigurations
     {
         public void Configure(EntityTypeBuilder<Kullanici> builder)
         {
-            
             builder.Property(k=>k.Ad).IsRequired();
             builder.Property(k=>k.Soyad).IsRequired();
             builder.Property(k=>k.Eposta).IsRequired();

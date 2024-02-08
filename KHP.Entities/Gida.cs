@@ -13,9 +13,7 @@ namespace KHP.Entities
         public decimal Kalori { get; set; }
         public decimal Porsiyon { get; set; }
         public string GidaTuru { get; set; }
+        public byte[]? Photo { get; set; }
 
-        //FR
-        public int? OgunID { get; set; }
-        //NAV PROP
     }
 }

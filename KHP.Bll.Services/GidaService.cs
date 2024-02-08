@@ -26,7 +26,8 @@ namespace KHP.Bll.Services
                 Ad = g.Ad,
                 Kalori = g.Kalori,
                 Porsiyon = g.Porsiyon,
-                GidaTuru = g.GidaTuru
+                GidaTuru = g.GidaTuru,
+                Photo = g.Photo
             }).ToList();
             return _vm;
         }
