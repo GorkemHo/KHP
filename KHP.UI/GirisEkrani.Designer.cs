@@ -82,7 +82,7 @@
             // 
             // btnGirisYap
             // 
-            btnGirisYap.BackColor = SystemColors.ButtonFace;
+            btnGirisYap.BackColor = Color.Azure;
             btnGirisYap.Location = new Point(126, 176);
             btnGirisYap.Name = "btnGirisYap";
             btnGirisYap.Size = new Size(127, 32);
@@ -95,7 +95,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.PaleTurquoise;
+            BackColor = Color.LightCyan;
             ClientSize = new Size(338, 336);
             Controls.Add(btnGirisYap);
             Controls.Add(lblKayıtOl);

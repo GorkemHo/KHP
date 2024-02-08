@@ -1,7 +1,7 @@
 ﻿using KHP.Bll.IServices;
 using KHP.Dal.IRepo;
 using KHP.Dal.Repo;
-using KHP.ViewModels;
+using KHP.ViewModels.GidaVms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +27,7 @@ namespace KHP.Bll.Services
                 Kalori = g.Kalori,
                 Porsiyon = g.Porsiyon,
                 GidaTuru = g.GidaTuru,
-                Resim = g.Resim
+                Resim = g.Resim,
             }).ToList();
             return _vm;
         }

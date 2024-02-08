@@ -1,7 +1,7 @@
 ﻿using KHP.Bll.IServices;
 using KHP.Bll.Services;
 using KHP.Entities;
-using KHP.ViewModels;
+using KHP.ViewModels.GidaVms;
 using KHP.ViewModels.KullaniciGidaVms;
 using System;
 using System.Collections.Generic;
@@ -35,9 +35,10 @@ namespace KHP.UI
         }
         private void AnaMenu_Load(object sender, EventArgs e)
         {
-            dgwGidalar.DataSource = _gidaService.GetAll();
+            dgwGidalar.DataSource = _gidaService.GetAll();              
             SorguButonlariniKapat();
             DetayButonlariniKapat();
+            txtAramaMetni.Enabled = true;
             cmbOgunSecme.SelectedIndex = 0;
             dgwGidalar.CurrentCell = null;
         }
