@@ -13,9 +13,7 @@ namespace KHP.Dal.EntityTypeConfigurations
     {
         public void Configure(EntityTypeBuilder<Kullanici> builder)
         {
-            builder.HasMany(k => k.Ogunler)
-                    .WithOne(o => o.Kullanici)
-                    .HasForeignKey(o => o.KullaniciID);
+            
 
             builder.Property(k=>k.Ad).IsRequired();
             builder.Property(k=>k.Soyad).IsRequired();

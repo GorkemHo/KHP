@@ -14,9 +14,7 @@ namespace KHP.Entities
         public decimal Porsiyon { get; set; }
         public string GidaTuru { get; set; }
 
-        //FR
-        public int? OgunID { get; set; }
-        //NAV PROP
-        public virtual Ogun? Ogun { get; set; }
+        public byte[]? Resim { get; set; }
+
     }
 }

@@ -13,11 +13,8 @@ namespace KHP.Dal.EntityTypeConfigurations
     {
         public void Configure(EntityTypeBuilder<Gida> builder)
         {
-            builder.HasOne(g => g.Ogun)
-                    .WithMany(o => o.Yemekler)
-                    .HasForeignKey(g => g.OgunID);
-
-            builder.Property(g => g.OgunID).IsRequired(false);
+           
+            
             builder.Property(g => g.Ad).IsRequired();
             builder.Property(g => g.Kalori).IsRequired();
             builder.Property(g => g.Porsiyon).IsRequired();
