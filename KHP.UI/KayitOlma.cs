@@ -25,13 +25,8 @@ namespace KHP.UI
             rdErkek.Checked = true;
         }
 
-
-
-
-
         private void btnKayıtOl_Click(object sender, EventArgs e)
         {
-
             string kullaniciAdi = txtEposta.Text.Trim();
             string sifre = txtSifre.Text.Trim();
             string sifretekrar = txtTekrarSifre.Text.Trim();
@@ -50,7 +45,6 @@ namespace KHP.UI
                             Soyad = txtSoyadı.Text,
                             Eposta = txtEposta.Text,
                             Sifre = hashlisifre,
-
                             DogumTarihi = dtDogumTarıhı.Value
                         };
                         var result = _service.Create(createVm);
