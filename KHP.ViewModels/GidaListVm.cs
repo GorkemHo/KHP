@@ -14,7 +14,7 @@ namespace KHP.ViewModels
         public decimal Kalori { get; set; }
         public decimal Porsiyon { get; set; }   
         public string GidaTuru { get; set; }
-        public byte[]? Photo { get; set; }
+        public byte[]? Resim { get; set; }
 
     }
 }

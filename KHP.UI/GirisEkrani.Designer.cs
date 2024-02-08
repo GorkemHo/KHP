@@ -47,9 +47,9 @@
             // 
             txtSifre.Location = new Point(111, 129);
             txtSifre.Name = "txtSifre";
-            txtSifre.PasswordChar = '*';
             txtSifre.Size = new Size(156, 23);
             txtSifre.TabIndex = 1;
+            txtSifre.UseSystemPasswordChar = true;
             // 
             // label1
             // 

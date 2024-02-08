@@ -27,7 +27,7 @@ namespace KHP.Bll.Services
                 Kalori = g.Kalori,
                 Porsiyon = g.Porsiyon,
                 GidaTuru = g.GidaTuru,
-                Photo = g.Photo
+                Resim = g.Resim
             }).ToList();
             return _vm;
         }
