@@ -33,6 +33,7 @@ namespace KHP.UI
                     AnaMenu ana = new AnaMenu(kullanici.ID);
                     ana.Show();
                     MessageBox.Show("Giriþ Baþarýlý");
+                    this.Hide();
                 }
 
                 else
@@ -44,7 +45,7 @@ namespace KHP.UI
             {
                 MessageBox.Show("Lütfen boþ alan býrakmayýnýz.");
             }
-            
+
         }
         private bool TextBoxlarBosMu(params TextBox[] textBoxlar)
         {

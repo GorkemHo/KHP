@@ -160,9 +160,12 @@
             // dtDogumTarıhı
             // 
             dtDogumTarıhı.Location = new Point(185, 268);
+            dtDogumTarıhı.MaxDate = new DateTime(2020, 12, 31, 0, 0, 0, 0);
+            dtDogumTarıhı.MinDate = new DateTime(1980, 1, 1, 0, 0, 0, 0);
             dtDogumTarıhı.Name = "dtDogumTarıhı";
             dtDogumTarıhı.Size = new Size(200, 23);
             dtDogumTarıhı.TabIndex = 14;
+            dtDogumTarıhı.Value = new DateTime(2020, 12, 31, 0, 0, 0, 0);
             // 
             // label7
             // 
@@ -175,19 +178,20 @@
             // 
             // btnKayıtOl
             // 
+            btnKayıtOl.BackColor = Color.Azure;
             btnKayıtOl.Location = new Point(219, 345);
             btnKayıtOl.Name = "btnKayıtOl";
             btnKayıtOl.Size = new Size(109, 40);
             btnKayıtOl.TabIndex = 15;
             btnKayıtOl.Text = "KAYIT OL";
-            btnKayıtOl.UseVisualStyleBackColor = true;
+            btnKayıtOl.UseVisualStyleBackColor = false;
             btnKayıtOl.Click += btnKayıtOl_Click;
             // 
             // KayitOlma
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.PaleTurquoise;
+            BackColor = Color.LightCyan;
             ClientSize = new Size(451, 450);
             Controls.Add(btnKayıtOl);
             Controls.Add(dtDogumTarıhı);

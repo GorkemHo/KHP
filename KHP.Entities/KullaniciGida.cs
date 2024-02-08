@@ -20,6 +20,7 @@ namespace KHP.Entities
         public decimal Porsiyon { get; set; }
         public string OgunAdi { get; set; }
         public DateTime OlusturulmaTarihi { get; set; }
+        public byte[]? Photo { get; set; }
 
     }
 }

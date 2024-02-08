@@ -185,8 +185,8 @@ namespace KHP.Bll.Services
 
                 return _kullaniciGidaRepo.Update(kullaniciGidaUpdate);
             }
-
             return 0;
+            
 
         }
     }

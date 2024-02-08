@@ -1,6 +1,7 @@
 ﻿using KHP.Bll.IServices;
 using KHP.Bll.Services;
 using KHP.ViewModels;
+using KHP.ViewModels.KullaniciVms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,7 @@ namespace KHP.UI
         {
             InitializeComponent();
             _service = new KullaniciService();
+            rdErkek.Checked = true;
         }
 
 
@@ -49,7 +51,6 @@ namespace KHP.UI
                             Eposta = txtEposta.Text,
                             Sifre = hashlisifre,
 
-                            Cinsiyet = rdErkek.Checked ? true : false,
                             DogumTarihi = dtDogumTarıhı.Value
                         };
                         var result = _service.Create(createVm);
@@ -87,5 +88,7 @@ namespace KHP.UI
             }
             return true;
         }
+        
+        
     }
 }
