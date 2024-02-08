@@ -54,12 +54,10 @@
             label8 = new Label();
             dgwGidalar = new DataGridView();
             dgwSecilenler = new DataGridView();
-            numericUpDown1 = new NumericUpDown();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgwDetaylar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgwGidalar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgwSecilenler).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
             // txtAramaMetni
@@ -305,19 +303,11 @@
             dgwSecilenler.TabIndex = 18;
             dgwSecilenler.CellValueChanged += dgwSecilenler_CellValueChanged;
             // 
-            // numericUpDown1
-            // 
-            numericUpDown1.Location = new Point(523, 165);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(120, 23);
-            numericUpDown1.TabIndex = 19;
-            // 
             // AnaMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1508, 814);
-            Controls.Add(numericUpDown1);
             Controls.Add(dgwSecilenler);
             Controls.Add(dgwGidalar);
             Controls.Add(label8);
@@ -345,7 +335,6 @@
             ((System.ComponentModel.ISupportInitialize)dgwDetaylar).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgwGidalar).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgwSecilenler).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -378,6 +367,5 @@
         private DataGridView dgwGidalar;
         private DataGridView dgwDetaylar;
         private DataGridView dgwSecilenler;
-        private NumericUpDown numericUpDown1;
     }
 }
