@@ -20,7 +20,6 @@ namespace KHP.UI
         IKullaniciGidaService _kullaniciGidaService;
         IGidaService _gidaService;
         IKullaniciService _kullaniciService;
-        IOgunService _ogunService;
         int _kullaniciId;
         List<GidaEklemeVm> secilenGidalar;
 
@@ -30,7 +29,6 @@ namespace KHP.UI
             InitializeComponent();
             _gidaService = new GidaService();
             _kullaniciService = new KullaniciService();
-            _ogunService = new OgunService();
             _kullaniciId = kullaniciId;
             secilenGidalar = new List<GidaEklemeVm>();
             _kullaniciGidaService = new KullaniciGidaService();

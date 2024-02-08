@@ -30,51 +30,62 @@ namespace KHP.UI
         private void btnKayıtOl_Click(object sender, EventArgs e)
         {
 
-            string kullaniciAdi=txtEposta.Text.Trim();
+            string kullaniciAdi = txtEposta.Text.Trim();
             string sifre = txtSifre.Text.Trim();
-            string sifretekrar=txtTekrarSifre.Text.Trim();
+            string sifretekrar = txtTekrarSifre.Text.Trim();
 
 
-
-            if (!_service.CheckIfUserNameExist(kullaniciAdi))
+            if (TextBoxlarBosMu(txtAdı, txtSoyadı, txtSifre, txtTekrarSifre, txtEposta))
             {
-                if(_service.CheckIfPasswordOk(sifre,sifretekrar)) 
+                if (!_service.CheckIfUserNameExist(kullaniciAdi))
                 {
-                    string hashlisifre = _service.sha256(sifre);
-                    var createVm = new KullaniciCreateVm
+                    if (_service.CheckIfPasswordOk(sifre, sifretekrar))
                     {
-                        Ad = txtAdı.Text,
-                        Soyad = txtSoyadı.Text,
-                        Eposta = txtEposta.Text,
-                        Sifre = hashlisifre,
+                        string hashlisifre = _service.sha256(sifre);
+                        var createVm = new KullaniciCreateVm
+                        {
+                            Ad = txtAdı.Text,
+                            Soyad = txtSoyadı.Text,
+                            Eposta = txtEposta.Text,
+                            Sifre = hashlisifre,
 
-                        Cinsiyet = rdErkek.Checked ? true : false,
-                        DogumTarihi = dtDogumTarıhı.Value
-                    };
-                    var result = _service.Create(createVm);
-                    if (result > 0)
-                    {
-                        MessageBox.Show("Kayıt Başarılı");
-                        this.Close();
+                            Cinsiyet = rdErkek.Checked ? true : false,
+                            DogumTarihi = dtDogumTarıhı.Value
+                        };
+                        var result = _service.Create(createVm);
+                        if (result > 0)
+                        {
+                            MessageBox.Show("Kayıt Başarılı, Giriş yapabilirsiniz.");
+                            this.Close();
+                        }
                     }
-                    
-                    
+                    else
+                    {
+                        MessageBox.Show("Şifre en az 2 büyük harf ve en az 3 küçük harf içermeli, 8 karakterden uzun olmalıdır.");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Sifre kriterleri karşılamadıgı için kayıt başarısız!");
+                    MessageBox.Show("Bu kullanıcı adı mevcut. Lütfen farklı bir kullanıcı adı giriniz.");
                 }
-                
             }
             else
             {
-                MessageBox.Show("Bu kullanıcı mevcuttur");
+                MessageBox.Show("Lütfen boş alan bırakmayınız.");
             }
-            
-            
-            
-            
-            
+
+
+        }
+        private bool TextBoxlarBosMu(params TextBox[] textBoxlar)
+        {
+            foreach (TextBox textBox in textBoxlar)
+            {
+                if (string.IsNullOrWhiteSpace(textBox.Text))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

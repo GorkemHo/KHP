@@ -48,35 +48,35 @@
             // 
             // txtAdı
             // 
-            txtAdı.Location = new Point(156, 55);
+            txtAdı.Location = new Point(184, 55);
             txtAdı.Name = "txtAdı";
             txtAdı.Size = new Size(201, 23);
             txtAdı.TabIndex = 0;
             // 
             // txtSoyadı
             // 
-            txtSoyadı.Location = new Point(156, 97);
+            txtSoyadı.Location = new Point(184, 97);
             txtSoyadı.Name = "txtSoyadı";
             txtSoyadı.Size = new Size(201, 23);
             txtSoyadı.TabIndex = 1;
             // 
             // txtEposta
             // 
-            txtEposta.Location = new Point(156, 137);
+            txtEposta.Location = new Point(184, 137);
             txtEposta.Name = "txtEposta";
             txtEposta.Size = new Size(201, 23);
             txtEposta.TabIndex = 2;
             // 
             // txtSifre
             // 
-            txtSifre.Location = new Point(156, 180);
+            txtSifre.Location = new Point(184, 180);
             txtSifre.Name = "txtSifre";
             txtSifre.Size = new Size(201, 23);
             txtSifre.TabIndex = 3;
             // 
             // txtTekrarSifre
             // 
-            txtTekrarSifre.Location = new Point(156, 223);
+            txtTekrarSifre.Location = new Point(184, 223);
             txtTekrarSifre.Name = "txtTekrarSifre";
             txtTekrarSifre.Size = new Size(201, 23);
             txtTekrarSifre.TabIndex = 4;
@@ -84,61 +84,61 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(77, 63);
+            label1.Location = new Point(100, 58);
             label1.Name = "label1";
-            label1.Size = new Size(25, 15);
+            label1.Size = new Size(46, 15);
             label1.TabIndex = 6;
-            label1.Text = "Adi";
+            label1.Text = "Adınız :";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(72, 105);
+            label2.Location = new Point(83, 100);
             label2.Name = "label2";
-            label2.Size = new Size(42, 15);
+            label2.Size = new Size(63, 15);
             label2.TabIndex = 7;
-            label2.Text = "Soyadı";
+            label2.Text = "Soyadınız :";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(72, 145);
+            label3.Location = new Point(93, 140);
             label3.Name = "label3";
-            label3.Size = new Size(47, 15);
+            label3.Size = new Size(53, 15);
             label3.TabIndex = 8;
-            label3.Text = "E-Posta";
+            label3.Text = "E-Posta :";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(72, 231);
+            label4.Location = new Point(31, 226);
             label4.Name = "label4";
-            label4.Size = new Size(64, 15);
+            label4.Size = new Size(115, 15);
             label4.TabIndex = 9;
-            label4.Text = "Şifre Tekrar";
+            label4.Text = "Şifreyi Tekrar Giriniz :";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(72, 310);
+            label6.Location = new Point(73, 308);
             label6.Name = "label6";
-            label6.Size = new Size(52, 15);
+            label6.Size = new Size(73, 15);
             label6.TabIndex = 11;
-            label6.Text = "Cinsiyeti";
+            label6.Text = "Cinsiyetiniz :";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(72, 188);
+            label5.Location = new Point(95, 183);
             label5.Name = "label5";
-            label5.Size = new Size(30, 15);
+            label5.Size = new Size(51, 15);
             label5.TabIndex = 9;
-            label5.Text = "Şifre";
+            label5.Text = "Şifreniz :";
             // 
             // rdErkek
             // 
             rdErkek.AutoSize = true;
-            rdErkek.Location = new Point(156, 308);
+            rdErkek.Location = new Point(203, 308);
             rdErkek.Name = "rdErkek";
             rdErkek.Size = new Size(53, 19);
             rdErkek.TabIndex = 12;
@@ -149,7 +149,7 @@
             // rdKadın
             // 
             rdKadın.AutoSize = true;
-            rdKadın.Location = new Point(263, 308);
+            rdKadın.Location = new Point(302, 308);
             rdKadın.Name = "rdKadın";
             rdKadın.Size = new Size(55, 19);
             rdKadın.TabIndex = 13;
@@ -159,7 +159,7 @@
             // 
             // dtDogumTarıhı
             // 
-            dtDogumTarıhı.Location = new Point(157, 268);
+            dtDogumTarıhı.Location = new Point(185, 268);
             dtDogumTarıhı.Name = "dtDogumTarıhı";
             dtDogumTarıhı.Size = new Size(200, 23);
             dtDogumTarıhı.TabIndex = 14;
@@ -167,15 +167,15 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(72, 274);
+            label7.Location = new Point(47, 269);
             label7.Name = "label7";
-            label7.Size = new Size(78, 15);
+            label7.Size = new Size(99, 15);
             label7.TabIndex = 11;
-            label7.Text = "Dogum Tarihi";
+            label7.Text = "Doğum Tarihiniz :";
             // 
             // btnKayıtOl
             // 
-            btnKayıtOl.Location = new Point(191, 345);
+            btnKayıtOl.Location = new Point(219, 345);
             btnKayıtOl.Name = "btnKayıtOl";
             btnKayıtOl.Size = new Size(109, 40);
             btnKayıtOl.TabIndex = 15;
@@ -187,6 +187,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.PaleTurquoise;
             ClientSize = new Size(451, 450);
             Controls.Add(btnKayıtOl);
             Controls.Add(dtDogumTarıhı);
@@ -204,6 +205,7 @@
             Controls.Add(txtEposta);
             Controls.Add(txtSoyadı);
             Controls.Add(txtAdı);
+            ForeColor = SystemColors.ActiveCaptionText;
             Name = "KayitOlma";
             Text = "KayitOlma";
             ResumeLayout(false);
