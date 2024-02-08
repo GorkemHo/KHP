@@ -39,6 +39,7 @@ namespace KHP.UI
             SorguButonlariniKapat();
             DetayButonlariniKapat();
             cmbOgunSecme.SelectedIndex = 0;
+            dgwGidalar.CurrentCell = null;
         }
 
         private void txtAramaMetni_TextChanged(object sender, EventArgs e)
@@ -70,6 +71,7 @@ namespace KHP.UI
 
         private void btnSec_Click(object sender, EventArgs e)
         {
+            
             try
             {
                 if (decimal.TryParse(txtSecilenUrunPorsiyon.Text, out decimal porsiyon) && porsiyon > 0)
@@ -91,6 +93,8 @@ namespace KHP.UI
                     dgwSecilenler.DataSource = null;
                     dgwSecilenler.DataSource = secilenGidalar;
                     btnSecilenleriKaydet.Enabled = true;
+                    btnSec.Enabled = false;
+                    dgwGidalar.CurrentCell = null;
                     DataGridViewGuncelleSecilenler();
                 }
                 else
@@ -235,6 +239,7 @@ namespace KHP.UI
             {
                 dgwDetaylar.DataSource = null;
                 dgwDetaylar.DataSource = _kullaniciGidaService.GetAll().Where(x => x.KullaniciId == _kullaniciId && x.OlusturulmaTarihi.Date == dtpDetayTarih.Value.Date).ToList();
+                DataGridViewGuncelleDetay();
             }
             catch (Exception ex)
             {
@@ -246,15 +251,23 @@ namespace KHP.UI
 
         private void txtSecilenUrunPorsiyon_TextChanged(object sender, EventArgs e)
         {
-            if (decimal.TryParse(txtSecilenUrunPorsiyon.Text, out decimal porsiyon))
+            if(dgwGidalar.CurrentRow != null)
             {
-                decimal kalori = porsiyon * (decimal)dgwGidalar.CurrentRow.Cells["Kalori"].Value;
-                lblSecilenKalorisi.Text = $" {kalori} kalori";
+                if (decimal.TryParse(txtSecilenUrunPorsiyon.Text, out decimal porsiyon))
+                {
+                    decimal kalori = porsiyon * (decimal)dgwGidalar.CurrentRow.Cells["Kalori"].Value;
+                    lblSecilenKalorisi.Text = $" {kalori} kalori";
+                }
+                else
+                {
+                    lblSecilenKalorisi.Text = "Geçersiz porsiyon değeri";
+                }
             }
             else
             {
-                lblSecilenKalorisi.Text = "Geçersiz porsiyon değeri";
+                //MessageBox.Show("Lütfen bir Gida Seçiniz.");
             }
+            
 
         }
         private void dgwSecilenler_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -283,10 +296,13 @@ namespace KHP.UI
             txtSecilenUrunAdi.Clear();
             txtSecilenUrunPorsiyon.Clear();
             secilenGidalar.Clear();
+            dgwGidalar.DataSource = null;
             dgwGidalar.DataSource = _gidaService.GetAll();
+            dgwGidalar.CurrentCell = null;
             lblSecilenKalorisi.Text = "";
             dgwSecilenler.DataSource = null;
             btnSecilenleriKaydet.Enabled = false;
+            btnSec.Enabled = false;
             DataGridViewGuncelleSecilenler();
         }
 

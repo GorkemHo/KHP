@@ -115,7 +115,7 @@
             btnSec.Name = "btnSec";
             btnSec.Size = new Size(464, 34);
             btnSec.TabIndex = 6;
-            btnSec.Text = "SEC";
+            btnSec.Text = "SEÇ";
             btnSec.UseVisualStyleBackColor = true;
             btnSec.Click += btnSec_Click;
             // 
@@ -125,7 +125,7 @@
             btnTemizle.Name = "btnTemizle";
             btnTemizle.Size = new Size(118, 40);
             btnTemizle.TabIndex = 7;
-            btnTemizle.Text = "TEMIZLE";
+            btnTemizle.Text = "TEMİZLE";
             btnTemizle.UseVisualStyleBackColor = true;
             btnTemizle.Click += btnTemizle_Click_1;
             // 
@@ -133,17 +133,17 @@
             // 
             btnSecilenleriKaydet.Location = new Point(180, 639);
             btnSecilenleriKaydet.Name = "btnSecilenleriKaydet";
-            btnSecilenleriKaydet.Size = new Size(130, 40);
+            btnSecilenleriKaydet.Size = new Size(295, 40);
             btnSecilenleriKaydet.TabIndex = 8;
-            btnSecilenleriKaydet.Text = "SECILENLERI KAYDET";
+            btnSecilenleriKaydet.Text = "SEÇİLENLERİ KAYDET";
             btnSecilenleriKaydet.UseVisualStyleBackColor = true;
             btnSecilenleriKaydet.Click += btnSecilenleriKaydet_Click;
             // 
             // btnRaporlarSayfasi
             // 
-            btnRaporlarSayfasi.Location = new Point(347, 637);
+            btnRaporlarSayfasi.Location = new Point(648, 639);
             btnRaporlarSayfasi.Name = "btnRaporlarSayfasi";
-            btnRaporlarSayfasi.Size = new Size(106, 44);
+            btnRaporlarSayfasi.Size = new Size(540, 40);
             btnRaporlarSayfasi.TabIndex = 9;
             btnRaporlarSayfasi.Text = "RAPORLAR SAYFASI";
             btnRaporlarSayfasi.UseVisualStyleBackColor = true;
@@ -171,13 +171,15 @@
             groupBox1.Size = new Size(540, 399);
             groupBox1.TabIndex = 11;
             groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
+            groupBox1.Text = "Tarihe Göre Detaylar ";
             // 
             // dgwDetaylar
             // 
             dgwDetaylar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgwDetaylar.Location = new Point(6, 139);
+            dgwDetaylar.MultiSelect = false;
             dgwDetaylar.Name = "dgwDetaylar";
+            dgwDetaylar.ReadOnly = true;
             dgwDetaylar.RowTemplate.Height = 25;
             dgwDetaylar.Size = new Size(527, 180);
             dgwDetaylar.TabIndex = 18;
@@ -188,9 +190,9 @@
             label9.AutoSize = true;
             label9.Location = new Point(6, 94);
             label9.Name = "label9";
-            label9.Size = new Size(231, 15);
+            label9.Size = new Size(234, 15);
             label9.TabIndex = 7;
-            label9.Text = "Detaylarini gormek istediginiz tarihi seciniz";
+            label9.Text = "Detaylarını görmek istediğiniz tarihi seçiniz.";
             // 
             // lblSecilenGunToplamKalori
             // 
@@ -206,7 +208,7 @@
             btnGuncelle.Name = "btnGuncelle";
             btnGuncelle.Size = new Size(140, 39);
             btnGuncelle.TabIndex = 5;
-            btnGuncelle.Text = "GUNCELLE";
+            btnGuncelle.Text = "GÜNCELLE";
             btnGuncelle.UseVisualStyleBackColor = true;
             btnGuncelle.Click += btnGuncelle_Click;
             // 
@@ -216,7 +218,7 @@
             btnSil.Name = "btnSil";
             btnSil.Size = new Size(140, 39);
             btnSil.TabIndex = 4;
-            btnSil.Text = "SIL";
+            btnSil.Text = "SİL";
             btnSil.UseVisualStyleBackColor = true;
             btnSil.Click += btnSil_Click;
             // 
@@ -226,7 +228,7 @@
             btnListele.Name = "btnListele";
             btnListele.Size = new Size(140, 39);
             btnListele.TabIndex = 3;
-            btnListele.Text = "LISTELE";
+            btnListele.Text = "LİSTEYİ YENİLE";
             btnListele.UseVisualStyleBackColor = true;
             btnListele.Click += btnListele_Click;
             // 
@@ -245,34 +247,34 @@
             label4.Name = "label4";
             label4.Size = new Size(69, 15);
             label4.TabIndex = 12;
-            label4.Text = "Gida Arama";
+            label4.Text = "Gıda Arama";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Location = new Point(225, 284);
             label5.Name = "label5";
-            label5.Size = new Size(75, 15);
+            label5.Size = new Size(58, 15);
             label5.TabIndex = 13;
-            label5.Text = "Ogun Secme";
+            label5.Text = "Öğün Seç";
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Location = new Point(349, 284);
             label6.Name = "label6";
-            label6.Size = new Size(32, 15);
+            label6.Size = new Size(53, 15);
             label6.TabIndex = 14;
-            label6.Text = "Tarih";
+            label6.Text = "Tarih Seç";
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Location = new Point(120, 283);
             label7.Name = "label7";
-            label7.Size = new Size(53, 15);
+            label7.Size = new Size(74, 15);
             label7.TabIndex = 15;
-            label7.Text = "Porsiyon";
+            label7.Text = "Porsiyon Seç";
             // 
             // label8
             // 
@@ -281,13 +283,15 @@
             label8.Name = "label8";
             label8.Size = new Size(73, 15);
             label8.TabIndex = 16;
-            label8.Text = "Secilen Urun";
+            label8.Text = "Seçilen Ürün";
             // 
             // dgwGidalar
             // 
             dgwGidalar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgwGidalar.Location = new Point(12, 131);
+            dgwGidalar.MultiSelect = false;
             dgwGidalar.Name = "dgwGidalar";
+            dgwGidalar.ReadOnly = true;
             dgwGidalar.RowTemplate.Height = 25;
             dgwGidalar.Size = new Size(464, 150);
             dgwGidalar.TabIndex = 17;
@@ -297,7 +301,9 @@
             // 
             dgwSecilenler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgwSecilenler.Location = new Point(14, 440);
+            dgwSecilenler.MultiSelect = false;
             dgwSecilenler.Name = "dgwSecilenler";
+            dgwSecilenler.ReadOnly = true;
             dgwSecilenler.RowTemplate.Height = 25;
             dgwSecilenler.Size = new Size(462, 150);
             dgwSecilenler.TabIndex = 18;
@@ -307,7 +313,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1508, 814);
+            ClientSize = new Size(1213, 814);
             Controls.Add(dgwSecilenler);
             Controls.Add(dgwGidalar);
             Controls.Add(label8);

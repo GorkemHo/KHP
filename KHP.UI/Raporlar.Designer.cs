@@ -79,6 +79,7 @@
             dgvKisi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvKisi.Location = new Point(6, 155);
             dgvKisi.Name = "dgvKisi";
+            dgvKisi.ReadOnly = true;
             dgvKisi.RowTemplate.Height = 25;
             dgvKisi.Size = new Size(511, 150);
             dgvKisi.TabIndex = 7;

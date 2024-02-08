@@ -17,6 +17,5 @@ namespace KHP.Entities
         //FR
         public int? OgunID { get; set; }
         //NAV PROP
-        public virtual Ogun? Ogun { get; set; }
     }
 }

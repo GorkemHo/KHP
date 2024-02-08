@@ -15,9 +15,6 @@ namespace KHP.Entities
         public bool Cinsiyet { get; set; }
         public DateTime DogumTarihi { get; set; }
         public string Sifre { get; set; }
-        //FR
-        public int OgunID { get; set; }
-        //NAV PROP  
-        public virtual ICollection<Ogun> Ogunler { get; set; }
+        
     }
 }

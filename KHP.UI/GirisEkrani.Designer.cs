@@ -104,7 +104,7 @@
             Controls.Add(txtSifre);
             Controls.Add(txtEposta);
             Name = "GirisEkrani";
-            Text = "Kayıt Ol";
+            Text = "Giriş Yap";
             ResumeLayout(false);
             PerformLayout();
         }

@@ -21,6 +21,7 @@ namespace KHP.UI
         {
             InitializeComponent();
             _service = new KullaniciService();
+            rdErkek.Checked = true;
         }
 
 
@@ -49,7 +50,6 @@ namespace KHP.UI
                             Eposta = txtEposta.Text,
                             Sifre = hashlisifre,
 
-                            Cinsiyet = rdErkek.Checked ? true : false,
                             DogumTarihi = dtDogumTarıhı.Value
                         };
                         var result = _service.Create(createVm);
@@ -87,5 +87,6 @@ namespace KHP.UI
             }
             return true;
         }
+        
     }
 }
