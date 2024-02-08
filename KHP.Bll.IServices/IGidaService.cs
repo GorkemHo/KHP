@@ -1,4 +1,4 @@
-﻿using KHP.ViewModels;
+﻿using KHP.ViewModels.GidaVms;
 using System;
 using System.Collections.Generic;
 using System.Linq;

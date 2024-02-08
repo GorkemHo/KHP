@@ -1,5 +1,5 @@
 ﻿using KHP.Entities;
-using KHP.ViewModels;
+using KHP.ViewModels.KullaniciVms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
