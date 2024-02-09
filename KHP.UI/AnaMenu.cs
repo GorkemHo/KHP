@@ -50,6 +50,10 @@ namespace KHP.UI
                 List<GidaListVm> arananGidalar = _gidaService.GetAll().Where(gida => gida.Ad.ToLower().Contains(aramaMetni.ToLower())).ToList();
                 dgwGidalar.DataSource = arananGidalar;
             }
+            else
+            {
+                dgwGidalar.DataSource = _gidaService.GetAll();
+            }
         }
 
         private void dgwGidalar_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -354,7 +358,6 @@ namespace KHP.UI
 
         private void DetayButonlariniKapat()
         {
-            btnListele.Enabled = false;
             btnSil.Enabled = false;
             btnGuncelle.Enabled = false;
         }
