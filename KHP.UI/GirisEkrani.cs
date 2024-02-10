@@ -58,5 +58,19 @@ namespace KHP.UI
             }
             return true;
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(txtSifre.UseSystemPasswordChar == true)
+            {
+                txtSifre.UseSystemPasswordChar = false;
+                chkSifreGoster.Text = "Gizle";
+            }
+            else
+            {
+                txtSifre.UseSystemPasswordChar = true;
+                chkSifreGoster.Text = "Göster";
+            }
+        }
     }
 }

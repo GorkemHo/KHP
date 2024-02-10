@@ -50,6 +50,10 @@ namespace KHP.UI
                 List<GidaListVm> arananGidalar = _gidaService.GetAll().Where(gida => gida.Ad.ToLower().Contains(aramaMetni.ToLower())).ToList();
                 dgwGidalar.DataSource = arananGidalar;
             }
+            else
+            {
+                dgwGidalar.DataSource = _gidaService.GetAll();
+            }
         }
 
         private void dgwGidalar_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -179,7 +183,9 @@ namespace KHP.UI
                             OlusturulmaTarihi = dtpOgunTarihi.Value.Date
                         };
                         _kullaniciGidaService.Update(KullaniciGidaUpdate);
+                        DetaylarTablosunuGuncelle();
                         MessageBox.Show("GÜNCELLEME TAMAMLANDI.");
+
                     }
                     else
                     {
@@ -206,6 +212,7 @@ namespace KHP.UI
                     int id = Convert.ToInt32(dgwDetaylar.CurrentRow.Cells["Id"].Value);
                     _kullaniciGidaService.Delete(id);
                     MessageBox.Show("Silindi.");
+                    DetaylarTablosunuGuncelle();
                 }
                 else
                 {
@@ -221,18 +228,10 @@ namespace KHP.UI
 
         private void btnListele_Click(object sender, EventArgs e)
         {
-            try
-            {
-                dgwDetaylar.DataSource = null;
-                dgwDetaylar.DataSource = _kullaniciGidaService.GetAll().Where(x => x.KullaniciId == _kullaniciId && x.OlusturulmaTarihi.Date == dtpDetayTarih.Value.Date).ToList();
-                DataGridViewGuncelleDetay();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Listeleme islemi sirasinda hata olustu!");
-            }            
-        }    
+            DetaylarTablosunuGuncelle();                     
+        }
 
+        
 
         private void txtSecilenUrunPorsiyon_TextChanged(object sender, EventArgs e)
         {
@@ -264,6 +263,20 @@ namespace KHP.UI
 
 
         #region Metotlar
+
+        private void DetaylarTablosunuGuncelle()
+        {
+            try
+            {
+                dgwDetaylar.DataSource = null;
+                dgwDetaylar.DataSource = _kullaniciGidaService.GetAll().Where(x => x.KullaniciId == _kullaniciId && x.OlusturulmaTarihi.Date == dtpDetayTarih.Value.Date).ToList();
+                DataGridViewGuncelleDetay();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Listeleme islemi sirasinda hata olustu!");
+            }
+        }
 
         private void SecilenleriTemizle()
         {
@@ -345,7 +358,6 @@ namespace KHP.UI
 
         private void DetayButonlariniKapat()
         {
-            btnListele.Enabled = false;
             btnSil.Enabled = false;
             btnGuncelle.Enabled = false;
         }
