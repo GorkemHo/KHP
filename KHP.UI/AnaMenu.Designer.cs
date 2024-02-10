@@ -313,7 +313,7 @@
             dgwGidalar.Name = "dgwGidalar";
             dgwGidalar.ReadOnly = true;
             dgwGidalar.RowTemplate.Height = 25;
-            dgwGidalar.Size = new Size(648, 202);
+            dgwGidalar.Size = new Size(672, 202);
             dgwGidalar.TabIndex = 17;
             dgwGidalar.CellClick += dgwGidalar_CellClick;
             // 
@@ -321,12 +321,12 @@
             // 
             dgwSecilenler.BackgroundColor = Color.LightCyan;
             dgwSecilenler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgwSecilenler.Location = new Point(44, 392);
+            dgwSecilenler.Location = new Point(10, 392);
             dgwSecilenler.MultiSelect = false;
             dgwSecilenler.Name = "dgwSecilenler";
             dgwSecilenler.ReadOnly = true;
             dgwSecilenler.RowTemplate.Height = 25;
-            dgwSecilenler.Size = new Size(581, 150);
+            dgwSecilenler.Size = new Size(724, 150);
             dgwSecilenler.TabIndex = 18;
             dgwSecilenler.CellValueChanged += dgwSecilenler_CellValueChanged;
             // 

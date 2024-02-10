@@ -19,7 +19,6 @@ namespace KHP.UI
     {
         IKullaniciGidaService _kullaniciGidaService;
         IGidaService _gidaService;
-        IKullaniciService _kullaniciService;
         int _kullaniciId;
         List<GidaEklemeVm> secilenGidalar;
 
@@ -28,7 +27,6 @@ namespace KHP.UI
         {
             InitializeComponent();
             _gidaService = new GidaService();
-            _kullaniciService = new KullaniciService();
             _kullaniciId = kullaniciId;
             secilenGidalar = new List<GidaEklemeVm>();
             _kullaniciGidaService = new KullaniciGidaService();
@@ -52,9 +50,11 @@ namespace KHP.UI
                 List<GidaListVm> arananGidalar = _gidaService.GetAll().Where(gida => gida.Ad.ToLower().Contains(aramaMetni.ToLower())).ToList();
                 dgwGidalar.DataSource = arananGidalar;
             }
+            else
+            {
+                dgwGidalar.DataSource = _gidaService.GetAll();
+            }
         }
-
-
 
         private void dgwGidalar_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -71,8 +71,7 @@ namespace KHP.UI
         }
 
         private void btnSec_Click(object sender, EventArgs e)
-        {
-            
+        {            
             try
             {
                 if (decimal.TryParse(txtSecilenUrunPorsiyon.Text, out decimal porsiyon) && porsiyon > 0)
@@ -87,15 +86,7 @@ namespace KHP.UI
                         OlusturulmaTarihi = dtpOgunTarihi.Value,
                         OgunAdi = cmbOgunSecme.SelectedItem.ToString()
                     });
-                    txtSecilenUrunAdi.Clear();
-                    txtSecilenUrunPorsiyon.Clear();
-                    dgwGidalar.DataSource = null;
-                    dgwGidalar.DataSource = _gidaService.GetAll();
-                    dgwSecilenler.DataSource = null;
-                    dgwSecilenler.DataSource = secilenGidalar;
-                    btnSecilenleriKaydet.Enabled = true;
-                    btnSec.Enabled = false;
-                    dgwGidalar.CurrentCell = null;
+                    SecilenleriTemizle();                    
                     DataGridViewGuncelleSecilenler();
                 }
                 else
@@ -107,10 +98,9 @@ namespace KHP.UI
             {
                 MessageBox.Show("Secme islemi sirasinda bir hata meydana geldi!");
             }
-            
-            
         }
 
+        
 
         private void btnSecilenleriKaydet_Click(object sender, EventArgs e)
         {
@@ -193,13 +183,14 @@ namespace KHP.UI
                             OlusturulmaTarihi = dtpOgunTarihi.Value.Date
                         };
                         _kullaniciGidaService.Update(KullaniciGidaUpdate);
+                        DetaylarTablosunuGuncelle();
                         MessageBox.Show("GÜNCELLEME TAMAMLANDI.");
+
                     }
                     else
                     {
                         MessageBox.Show("Geçersiz porsiyon değeri. Lütfen pozitif bir rakam giriniz.");
-                    }
-                    
+                    }                    
                 }
                 else
                 {
@@ -221,6 +212,7 @@ namespace KHP.UI
                     int id = Convert.ToInt32(dgwDetaylar.CurrentRow.Cells["Id"].Value);
                     _kullaniciGidaService.Delete(id);
                     MessageBox.Show("Silindi.");
+                    DetaylarTablosunuGuncelle();
                 }
                 else
                 {
@@ -236,19 +228,10 @@ namespace KHP.UI
 
         private void btnListele_Click(object sender, EventArgs e)
         {
-            try
-            {
-                dgwDetaylar.DataSource = null;
-                dgwDetaylar.DataSource = _kullaniciGidaService.GetAll().Where(x => x.KullaniciId == _kullaniciId && x.OlusturulmaTarihi.Date == dtpDetayTarih.Value.Date).ToList();
-                DataGridViewGuncelleDetay();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Listeleme islemi sirasinda hata olustu!");
-            }
-            
-        }    
+            DetaylarTablosunuGuncelle();                     
+        }
 
+        
 
         private void txtSecilenUrunPorsiyon_TextChanged(object sender, EventArgs e)
         {
@@ -264,13 +247,8 @@ namespace KHP.UI
                     lblSecilenKalorisi.Text = "Geçersiz porsiyon değeri";
                 }
             }
-            else
-            {
-                //MessageBox.Show("Lütfen bir Gida Seçiniz.");
-            }
-            
-
         }
+
         private void dgwSecilenler_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewGuncelleSecilenler();
@@ -281,6 +259,36 @@ namespace KHP.UI
             dgwDetaylar.DataSource = null;
             dgwDetaylar.DataSource = _kullaniciGidaService.GetAll().Where(x => x.KullaniciId == _kullaniciId && x.OlusturulmaTarihi.Date == dtpDetayTarih.Value.Date).ToList();
             DataGridViewGuncelleDetay();
+        }
+
+
+        #region Metotlar
+
+        private void DetaylarTablosunuGuncelle()
+        {
+            try
+            {
+                dgwDetaylar.DataSource = null;
+                dgwDetaylar.DataSource = _kullaniciGidaService.GetAll().Where(x => x.KullaniciId == _kullaniciId && x.OlusturulmaTarihi.Date == dtpDetayTarih.Value.Date).ToList();
+                DataGridViewGuncelleDetay();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Listeleme islemi sirasinda hata olustu!");
+            }
+        }
+
+        private void SecilenleriTemizle()
+        {
+            txtSecilenUrunAdi.Clear();
+            txtSecilenUrunPorsiyon.Clear();
+            dgwGidalar.DataSource = null;
+            dgwGidalar.DataSource = _gidaService.GetAll();
+            dgwSecilenler.DataSource = null;
+            dgwSecilenler.DataSource = secilenGidalar;
+            btnSecilenleriKaydet.Enabled = true;
+            btnSec.Enabled = false;
+            dgwGidalar.CurrentCell = null;
         }
 
         private void DataGridViewGuncelleDetay()
@@ -350,7 +358,6 @@ namespace KHP.UI
 
         private void DetayButonlariniKapat()
         {
-            btnListele.Enabled = false;
             btnSil.Enabled = false;
             btnGuncelle.Enabled = false;
         }
@@ -370,7 +377,9 @@ namespace KHP.UI
             btnTemizle.Enabled = false;
             btnSecilenleriKaydet.Enabled = false;
         }
+        #endregion
 
-        
+
+
     }
 }

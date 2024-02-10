@@ -34,6 +34,7 @@
             label2 = new Label();
             lblKayıtOl = new LinkLabel();
             btnGirisYap = new Button();
+            chkSifreGoster = new CheckBox();
             SuspendLayout();
             // 
             // txtEposta
@@ -45,7 +46,7 @@
             // 
             // txtSifre
             // 
-            txtSifre.Location = new Point(111, 129);
+            txtSifre.Location = new Point(111, 122);
             txtSifre.Name = "txtSifre";
             txtSifre.Size = new Size(156, 23);
             txtSifre.TabIndex = 1;
@@ -63,7 +64,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(60, 132);
+            label2.Location = new Point(60, 125);
             label2.Name = "label2";
             label2.Size = new Size(30, 15);
             label2.TabIndex = 3;
@@ -91,12 +92,24 @@
             btnGirisYap.UseVisualStyleBackColor = false;
             btnGirisYap.Click += btnGirisYap_Click;
             // 
+            // chkSifreGoster
+            // 
+            chkSifreGoster.AutoSize = true;
+            chkSifreGoster.Location = new Point(111, 151);
+            chkSifreGoster.Name = "chkSifreGoster";
+            chkSifreGoster.Size = new Size(60, 19);
+            chkSifreGoster.TabIndex = 6;
+            chkSifreGoster.Text = "Goster";
+            chkSifreGoster.UseVisualStyleBackColor = true;
+            chkSifreGoster.CheckedChanged += checkBox1_CheckedChanged;
+            // 
             // GirisEkrani
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
             ClientSize = new Size(338, 336);
+            Controls.Add(chkSifreGoster);
             Controls.Add(btnGirisYap);
             Controls.Add(lblKayıtOl);
             Controls.Add(label2);
@@ -117,5 +130,6 @@
         private Label label2;
         private LinkLabel lblKayıtOl;
         private Button btnGirisYap;
+        private CheckBox chkSifreGoster;
     }
 }
